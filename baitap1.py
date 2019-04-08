@@ -1,19 +1,19 @@
 from antlr4 import *
-from BaiTap1Lexer import BaiTap1Lexer
-from BaiTap1Listener import BaiTap1Listener
-from BaiTap1Parser import BaiTap1Parser
+from SimpleCodeLexer import SimpleCodeLexer
+from SimpleCodeListener import SimpleCodeListener
+from SimpleCodeParser import SimpleCodeParser
 import sys
 
-class BaiTap1PrintListener(BaiTap1Listener):
-    def enterHi(self, ctx):
-        print("BaiTap1: %s" % ctx.ID())
+class SimpleCodePrintListener(SimpleCodeListener):
+    def enterProgram(self, ctx):
+        print("SimpleCode: %s" % ctx)
 
 def main():
-    lexer = BaiTap1Lexer(StdinStream())
+    lexer = SimpleCodeLexer(StdinStream())
     stream = CommonTokenStream(lexer)
-    parser = BaiTap1Parser(stream)
+    parser = SimpleCodeParser(stream)
     tree = parser.program()
-    printer = BaiTap1PrintListener()
+    printer = SimpleCodePrintListener()
     walker = ParseTreeWalker()
     walker.walk(printer, tree)
 

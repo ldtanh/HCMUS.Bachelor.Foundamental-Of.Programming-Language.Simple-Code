@@ -1,9 +1,9 @@
 class Program {
-	int main() {
-		int v;
-		v = 1;
-		v = 'c';
-		v = true;
-		return 0;
-	}
+    int main() {
+        int v;
+        v = 1;
+        v = 'c';
+        v = true;
+        return 0; 
+    }
 }
