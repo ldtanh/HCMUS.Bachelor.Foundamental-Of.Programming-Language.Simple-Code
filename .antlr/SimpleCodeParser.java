@@ -20,9 +20,9 @@ public class SimpleCodeParser extends Parser {
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
-		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, Data_type=37, IDENTIFIER=38, 
-		INTLITERAL=39, Decimal_Literal=40, Hex_Literal=41, CHAR=42, CHARLITERAL=43, 
-		STRINGLITERAL=44, BOOLEANLITERAL=45, ALPHA=46, DIGIT=47, HEX_DIGIT=48, 
+		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, Data_type=37, CHAR=38, 
+		CHARLITERAL=39, STRINGLITERAL=40, BOOLEANLITERAL=41, IDENTIFIER=42, INTLITERAL=43, 
+		Decimal_Literal=44, Hex_Literal=45, ALPHA=46, DIGIT=47, HEX_DIGIT=48, 
 		White=49, Newline=50, LineComment=51, BlockComment=52;
 	public static final int
 		RULE_program = 0, RULE_field_decl = 1, RULE_method_decl = 2, RULE_method_decl_type = 3, 
@@ -49,9 +49,9 @@ public class SimpleCodeParser extends Parser {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, "Data_type", "IDENTIFIER", "INTLITERAL", "Decimal_Literal", "Hex_Literal", 
-		"CHAR", "CHARLITERAL", "STRINGLITERAL", "BOOLEANLITERAL", "ALPHA", "DIGIT", 
-		"HEX_DIGIT", "White", "Newline", "LineComment", "BlockComment"
+		null, "Data_type", "CHAR", "CHARLITERAL", "STRINGLITERAL", "BOOLEANLITERAL", 
+		"IDENTIFIER", "INTLITERAL", "Decimal_Literal", "Hex_Literal", "ALPHA", 
+		"DIGIT", "HEX_DIGIT", "White", "Newline", "LineComment", "BlockComment"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -685,7 +685,7 @@ public class SimpleCodeParser extends Parser {
 				setState(155);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << T__21) | (1L << T__22) | (1L << T__23) | (1L << IDENTIFIER) | (1L << INTLITERAL) | (1L << CHARLITERAL) | (1L << BOOLEANLITERAL))) != 0)) {
+				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__7) | (1L << T__21) | (1L << T__22) | (1L << T__23) | (1L << CHARLITERAL) | (1L << BOOLEANLITERAL) | (1L << IDENTIFIER) | (1L << INTLITERAL))) != 0)) {
 					{
 					setState(154);
 					expr(0);
@@ -1162,10 +1162,10 @@ public class SimpleCodeParser extends Parser {
 			case T__21:
 			case T__22:
 			case T__23:
-			case IDENTIFIER:
-			case INTLITERAL:
 			case CHARLITERAL:
 			case BOOLEANLITERAL:
+			case IDENTIFIER:
+			case INTLITERAL:
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(232);
@@ -1473,7 +1473,7 @@ public class SimpleCodeParser extends Parser {
 			{
 			setState(259);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INTLITERAL) | (1L << CHARLITERAL) | (1L << BOOLEANLITERAL))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CHARLITERAL) | (1L << BOOLEANLITERAL) | (1L << INTLITERAL))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -1531,7 +1531,7 @@ public class SimpleCodeParser extends Parser {
 		"\23\u00f9\n\23\r\23\16\23\u00fa\3\23\5\23\u00fe\n\23\3\24\3\24\3\25\3"+
 		"\25\3\26\3\26\3\27\3\27\3\27\2\3\36\30\2\4\6\b\n\f\16\20\22\24\26\30\32"+
 		"\34\36 \"$&(*,\2\b\4\2\f\f\'\'\4\2\22\22\26\27\3\2\37\"\3\2#$\3\2%&\5"+
-		"\2))--//\2\u0117\2.\3\2\2\2\4?\3\2\2\2\6K\3\2\2\2\bU\3\2\2\2\n\\\3\2\2"+
+		"\2))++--\2\u0117\2.\3\2\2\2\4?\3\2\2\2\6K\3\2\2\2\bU\3\2\2\2\n\\\3\2\2"+
 		"\2\f^\3\2\2\2\16h\3\2\2\2\20w\3\2\2\2\22\u00a5\3\2\2\2\24\u00a7\3\2\2"+
 		"\2\26\u00bd\3\2\2\2\30\u00bf\3\2\2\2\32\u00c9\3\2\2\2\34\u00d1\3\2\2\2"+
 		"\36\u00df\3\2\2\2 \u00ec\3\2\2\2\"\u00f2\3\2\2\2$\u00fd\3\2\2\2&\u00ff"+
@@ -1541,14 +1541,14 @@ public class SimpleCodeParser extends Parser {
 		"9<\3\2\2\2:8\3\2\2\2:;\3\2\2\2;=\3\2\2\2<:\3\2\2\2=>\7\6\2\2>\3\3\2\2"+
 		"\2?@\7\'\2\2@A\7\7\2\2AF\5\n\6\2BC\7\b\2\2CE\5\n\6\2DB\3\2\2\2EH\3\2\2"+
 		"\2FD\3\2\2\2FG\3\2\2\2GI\3\2\2\2HF\3\2\2\2IJ\7\t\2\2J\5\3\2\2\2KL\5\b"+
-		"\5\2LM\7\7\2\2MN\7(\2\2NP\7\n\2\2OQ\5\f\7\2PO\3\2\2\2PQ\3\2\2\2QR\3\2"+
-		"\2\2RS\7\13\2\2ST\5\16\b\2T\7\3\2\2\2UV\t\2\2\2V\t\3\2\2\2W]\7(\2\2XY"+
-		"\7(\2\2YZ\7\r\2\2Z[\7)\2\2[]\7\16\2\2\\W\3\2\2\2\\X\3\2\2\2]\13\3\2\2"+
-		"\2^_\7\'\2\2_e\7(\2\2`a\7\b\2\2ab\7\'\2\2bd\7(\2\2c`\3\2\2\2dg\3\2\2\2"+
+		"\5\2LM\7\7\2\2MN\7,\2\2NP\7\n\2\2OQ\5\f\7\2PO\3\2\2\2PQ\3\2\2\2QR\3\2"+
+		"\2\2RS\7\13\2\2ST\5\16\b\2T\7\3\2\2\2UV\t\2\2\2V\t\3\2\2\2W]\7,\2\2XY"+
+		"\7,\2\2YZ\7\r\2\2Z[\7-\2\2[]\7\16\2\2\\W\3\2\2\2\\X\3\2\2\2]\13\3\2\2"+
+		"\2^_\7\'\2\2_e\7,\2\2`a\7\b\2\2ab\7\'\2\2bd\7,\2\2c`\3\2\2\2dg\3\2\2\2"+
 		"ec\3\2\2\2ef\3\2\2\2f\r\3\2\2\2ge\3\2\2\2hl\7\5\2\2ik\5\20\t\2ji\3\2\2"+
 		"\2kn\3\2\2\2lj\3\2\2\2lm\3\2\2\2mr\3\2\2\2nl\3\2\2\2oq\5\22\n\2po\3\2"+
 		"\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2su\3\2\2\2tr\3\2\2\2uv\7\6\2\2v\17\3"+
-		"\2\2\2wx\7\'\2\2x}\7(\2\2yz\7\b\2\2z|\7(\2\2{y\3\2\2\2|\177\3\2\2\2}{"+
+		"\2\2\2wx\7\'\2\2x}\7,\2\2yz\7\b\2\2z|\7,\2\2{y\3\2\2\2|\177\3\2\2\2}{"+
 		"\3\2\2\2}~\3\2\2\2~\u0080\3\2\2\2\177}\3\2\2\2\u0080\u0081\7\t\2\2\u0081"+
 		"\21\3\2\2\2\u0082\u0083\5\34\17\2\u0083\u0084\5\24\13\2\u0084\u0085\5"+
 		"\36\20\2\u0085\u0086\7\t\2\2\u0086\u00a6\3\2\2\2\u0087\u0088\5\26\f\2"+
@@ -1556,7 +1556,7 @@ public class SimpleCodeParser extends Parser {
 		"\7\n\2\2\u008c\u008d\5\36\20\2\u008d\u008e\7\13\2\2\u008e\u0091\5\16\b"+
 		"\2\u008f\u0090\7\20\2\2\u0090\u0092\5\16\b\2\u0091\u008f\3\2\2\2\u0091"+
 		"\u0092\3\2\2\2\u0092\u00a6\3\2\2\2\u0093\u0094\7\21\2\2\u0094\u0095\7"+
-		"(\2\2\u0095\u0096\7\22\2\2\u0096\u0097\5\36\20\2\u0097\u0098\7\b\2\2\u0098"+
+		",\2\2\u0095\u0096\7\22\2\2\u0096\u0097\5\36\20\2\u0097\u0098\7\b\2\2\u0098"+
 		"\u0099\5\36\20\2\u0099\u009a\5\16\b\2\u009a\u00a6\3\2\2\2\u009b\u009d"+
 		"\7\23\2\2\u009c\u009e\5\36\20\2\u009d\u009c\3\2\2\2\u009d\u009e\3\2\2"+
 		"\2\u009e\u009f\3\2\2\2\u009f\u00a6\7\t\2\2\u00a0\u00a1\7\24\2\2\u00a1"+
@@ -1566,16 +1566,16 @@ public class SimpleCodeParser extends Parser {
 		"\2\2\u00a5\u00a4\3\2\2\2\u00a6\23\3\2\2\2\u00a7\u00a8\t\3\2\2\u00a8\25"+
 		"\3\2\2\2\u00a9\u00aa\5\32\16\2\u00aa\u00ac\7\n\2\2\u00ab\u00ad\5\30\r"+
 		"\2\u00ac\u00ab\3\2\2\2\u00ac\u00ad\3\2\2\2\u00ad\u00ae\3\2\2\2\u00ae\u00af"+
-		"\7\13\2\2\u00af\u00be\3\2\2\2\u00b0\u00b1\7\30\2\2\u00b1\u00bb\7.\2\2"+
+		"\7\13\2\2\u00af\u00be\3\2\2\2\u00b0\u00b1\7\30\2\2\u00b1\u00bb\7*\2\2"+
 		"\u00b2\u00b3\7\b\2\2\u00b3\u00b8\5 \21\2\u00b4\u00b5\7\b\2\2\u00b5\u00b7"+
 		"\5 \21\2\u00b6\u00b4\3\2\2\2\u00b7\u00ba\3\2\2\2\u00b8\u00b6\3\2\2\2\u00b8"+
 		"\u00b9\3\2\2\2\u00b9\u00bc\3\2\2\2\u00ba\u00b8\3\2\2\2\u00bb\u00b2\3\2"+
 		"\2\2\u00bb\u00bc\3\2\2\2\u00bc\u00be\3\2\2\2\u00bd\u00a9\3\2\2\2\u00bd"+
-		"\u00b0\3\2\2\2\u00be\27\3\2\2\2\u00bf\u00c0\7\'\2\2\u00c0\u00c6\7(\2\2"+
-		"\u00c1\u00c2\7\b\2\2\u00c2\u00c3\7\'\2\2\u00c3\u00c5\7(\2\2\u00c4\u00c1"+
+		"\u00b0\3\2\2\2\u00be\27\3\2\2\2\u00bf\u00c0\7\'\2\2\u00c0\u00c6\7,\2\2"+
+		"\u00c1\u00c2\7\b\2\2\u00c2\u00c3\7\'\2\2\u00c3\u00c5\7,\2\2\u00c4\u00c1"+
 		"\3\2\2\2\u00c5\u00c8\3\2\2\2\u00c6\u00c4\3\2\2\2\u00c6\u00c7\3\2\2\2\u00c7"+
-		"\31\3\2\2\2\u00c8\u00c6\3\2\2\2\u00c9\u00ca\7(\2\2\u00ca\33\3\2\2\2\u00cb"+
-		"\u00d2\7(\2\2\u00cc\u00cd\7(\2\2\u00cd\u00ce\7\r\2\2\u00ce\u00cf\5\36"+
+		"\31\3\2\2\2\u00c8\u00c6\3\2\2\2\u00c9\u00ca\7,\2\2\u00ca\33\3\2\2\2\u00cb"+
+		"\u00d2\7,\2\2\u00cc\u00cd\7,\2\2\u00cd\u00ce\7\r\2\2\u00ce\u00cf\5\36"+
 		"\20\2\u00cf\u00d0\7\16\2\2\u00d0\u00d2\3\2\2\2\u00d1\u00cb\3\2\2\2\u00d1"+
 		"\u00cc\3\2\2\2\u00d2\35\3\2\2\2\u00d3\u00d4\b\20\1\2\u00d4\u00e0\5\34"+
 		"\17\2\u00d5\u00e0\5\26\f\2\u00d6\u00e0\5,\27\2\u00d7\u00d8\7\31\2\2\u00d8"+
@@ -1586,7 +1586,7 @@ public class SimpleCodeParser extends Parser {
 		"\u00e2\f\6\2\2\u00e2\u00e3\5\"\22\2\u00e3\u00e4\5\36\20\7\u00e4\u00e6"+
 		"\3\2\2\2\u00e5\u00e1\3\2\2\2\u00e6\u00e9\3\2\2\2\u00e7\u00e5\3\2\2\2\u00e7"+
 		"\u00e8\3\2\2\2\u00e8\37\3\2\2\2\u00e9\u00e7\3\2\2\2\u00ea\u00ed\5\36\20"+
-		"\2\u00eb\u00ed\7.\2\2\u00ec\u00ea\3\2\2\2\u00ec\u00eb\3\2\2\2\u00ed!\3"+
+		"\2\u00eb\u00ed\7*\2\2\u00ec\u00ea\3\2\2\2\u00ec\u00eb\3\2\2\2\u00ed!\3"+
 		"\2\2\2\u00ee\u00f3\5$\23\2\u00ef\u00f3\5&\24\2\u00f0\u00f3\5(\25\2\u00f1"+
 		"\u00f3\5*\26\2\u00f2\u00ee\3\2\2\2\u00f2\u00ef\3\2\2\2\u00f2\u00f0\3\2"+
 		"\2\2\u00f2\u00f1\3\2\2\2\u00f3#\3\2\2\2\u00f4\u00fe\7\33\2\2\u00f5\u00fe"+

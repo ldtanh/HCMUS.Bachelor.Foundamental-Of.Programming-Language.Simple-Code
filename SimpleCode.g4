@@ -22,16 +22,16 @@ rel_op : '<' | '>' | '<=' | '>=' ;
 eq_op : '==' | '!=' ;
 cond_op : '&&' | '||' ;
 literal : INTLITERAL | CHARLITERAL | BOOLEANLITERAL ;
+CHAR: ~['\\\r\n] | '\\' ['"?abfnrtv\\];
+CHARLITERAL : '\'' CHAR '\''  ;
+STRINGLITERAL : '"' CHAR* '"' ;
+BOOLEANLITERAL : 'true' | 'false' ;
 IDENTIFIER : ALPHA (ALPHA | DIGIT)* ;
 INTLITERAL : Decimal_Literal | Hex_Literal ;
 Decimal_Literal : DIGIT DIGIT* ;
 Hex_Literal : '0x' HEX_DIGIT+ ;
-CHAR: . ;
-CHARLITERAL : '\'' CHAR '\''  ;
-STRINGLITERAL : '"' CHAR* '"' ;
-BOOLEANLITERAL : 'true' | 'false' ;
 
-ALPHA : [a-zA-Z];
+ALPHA : [a-zA-Z_];
 DIGIT : [0-9] ;
 HEX_DIGIT : [0-9a-fA-F] ;
 
