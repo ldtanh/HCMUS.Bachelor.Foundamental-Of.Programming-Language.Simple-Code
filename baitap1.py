@@ -64,8 +64,9 @@ class MyErrorListener( ErrorListener ):
                 input = tokens.getText()
         else:
             input = "<unknown input>"
-        msg = 'Error with input {0}'.format(self.escapeWSAndQuote(input))
-        self.printSyntaxError(msg, line, column)
+        if (input.strip() != ''):
+            msg = 'No viable alternative at input {0}'.format(self.escapeWSAndQuote(input))
+            self.printSyntaxError(msg, line, column)
 
     def reportInputMismatch(self, recognizer:Parser, e:InputMismatchException, line, column):
         msg = "Mismatched input {0}. Expected {1}".format(self.getTokenErrorDisplay(e.offendingToken), e.getExpectedTokens().toString(recognizer.literalNames, recognizer.symbolicNames))

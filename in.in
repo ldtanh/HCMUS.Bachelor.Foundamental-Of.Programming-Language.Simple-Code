@@ -1,4 +1,7 @@
 class Program {
-    int i	// missing semicolon
+  void main() {
+    int b;
+    b = 2 + 7 = 12;	// bad expression
+  }
 }
 

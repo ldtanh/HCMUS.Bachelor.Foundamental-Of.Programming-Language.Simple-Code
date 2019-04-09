@@ -1,5 +1,5 @@
 grammar SimpleCode;           
-program  : 'class' ' ' 'Program' ' ' '{'  field_decl* method_decl*  '}' ;
+program  : 'class' ' ' 'Program' ' ' '{' ' '* field_decl* method_decl* ' '* '}' ;
 field_decl : DATA_TYPE ' ' variable (',' variable)* ';' ;
 method_decl: method_decl_type ' ' IDENTIFIER '(' method_params? ')' ' '* block ;
 method_decl_type: 'void' | DATA_TYPE ;
@@ -17,7 +17,7 @@ location : IDENTIFIER | IDENTIFIER '[' expr ']' ;
 expr : location | method_call | literal | expr bin_op expr | '-' expr | '!' expr | '(' expr ')' ;
 callout_arg : expr | STRINGLITERAL ;
 bin_op : arith_op | rel_op | eq_op | cond_op ;
-arith_op : '+' | '-' | '*' | '/' + '%' ;
+arith_op : '+' | '-' | '*' | '/' | '%' ;
 rel_op : '<' | '>' | '<=' | '>=' ;
 eq_op : '==' | '!=' ;
 cond_op : '&&' | '||' ;
