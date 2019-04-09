@@ -35,21 +35,21 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleCodeParser#method_params.
-    def enterMethod_params(self, ctx:SimpleCodeParser.Method_paramsContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#method_params.
-    def exitMethod_params(self, ctx:SimpleCodeParser.Method_paramsContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleCodeParser#variable.
     def enterVariable(self, ctx:SimpleCodeParser.VariableContext):
         pass
 
     # Exit a parse tree produced by SimpleCodeParser#variable.
     def exitVariable(self, ctx:SimpleCodeParser.VariableContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleCodeParser#method_params.
+    def enterMethod_params(self, ctx:SimpleCodeParser.Method_paramsContext):
+        pass
+
+    # Exit a parse tree produced by SimpleCodeParser#method_params.
+    def exitMethod_params(self, ctx:SimpleCodeParser.Method_paramsContext):
         pass
 
 
@@ -68,15 +68,6 @@ class SimpleCodeListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleCodeParser#var_decl.
     def exitVar_decl(self, ctx:SimpleCodeParser.Var_declContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#data_type.
-    def enterData_type(self, ctx:SimpleCodeParser.Data_typeContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#data_type.
-    def exitData_type(self, ctx:SimpleCodeParser.Data_typeContext):
         pass
 
 
@@ -113,6 +104,15 @@ class SimpleCodeListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleCodeParser#method_call_params.
     def exitMethod_call_params(self, ctx:SimpleCodeParser.Method_call_paramsContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleCodeParser#data_type.
+    def enterData_type(self, ctx:SimpleCodeParser.Data_typeContext):
+        pass
+
+    # Exit a parse tree produced by SimpleCodeParser#data_type.
+    def exitData_type(self, ctx:SimpleCodeParser.Data_typeContext):
         pass
 
 
@@ -206,66 +206,12 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleCodeParser#identifier.
-    def enterIdentifier(self, ctx:SimpleCodeParser.IdentifierContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#identifier.
-    def exitIdentifier(self, ctx:SimpleCodeParser.IdentifierContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#alpha_num.
-    def enterAlpha_num(self, ctx:SimpleCodeParser.Alpha_numContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#alpha_num.
-    def exitAlpha_num(self, ctx:SimpleCodeParser.Alpha_numContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleCodeParser#int_literal.
     def enterInt_literal(self, ctx:SimpleCodeParser.Int_literalContext):
         pass
 
     # Exit a parse tree produced by SimpleCodeParser#int_literal.
     def exitInt_literal(self, ctx:SimpleCodeParser.Int_literalContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#decimal_literal.
-    def enterDecimal_literal(self, ctx:SimpleCodeParser.Decimal_literalContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#decimal_literal.
-    def exitDecimal_literal(self, ctx:SimpleCodeParser.Decimal_literalContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#hex_literal.
-    def enterHex_literal(self, ctx:SimpleCodeParser.Hex_literalContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#hex_literal.
-    def exitHex_literal(self, ctx:SimpleCodeParser.Hex_literalContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#bool_literal.
-    def enterBool_literal(self, ctx:SimpleCodeParser.Bool_literalContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#bool_literal.
-    def exitBool_literal(self, ctx:SimpleCodeParser.Bool_literalContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#char_literal.
-    def enterChar_literal(self, ctx:SimpleCodeParser.Char_literalContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#char_literal.
-    def exitChar_literal(self, ctx:SimpleCodeParser.Char_literalContext):
         pass
 
 

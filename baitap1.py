@@ -6,13 +6,22 @@ import sys
 
 class SimpleCodePrintListener(SimpleCodeListener):
     def enterProgram(self, ctx):
-        print("Enter Program: %s" % ctx)
-    
-    def enterMethod_decl(self, ctx):
-        print("Enter Method Declaration: {0}".format(ctx))
-        
+        print(ctx.getText())
+        print(ctx.toStringTree())
+        for child in ctx.getChildren():
+            print(child.getSymbol())
+
 def main():
-    lexer = SimpleCodeLexer(StdinStream())
+    input_stream = FileStream('in.in')
+    # lexer = SimpleCodeLexer(input_stream)
+    # stream = CommonTokenStream(lexer)
+    # parser = SimpleCodeParser(stream)
+    # tree = parser.program()
+    # printer = SimpleCodePrintListener()
+    # walker = ParseTreeWalker()
+    # walker.walk(printer, tree)
+
+    lexer = SimpleCodeLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = SimpleCodeParser(stream)
     tree = parser.program()
