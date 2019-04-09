@@ -199,7 +199,7 @@ class SimpleCodeLexer(Lexer):
     T__33 = 34
     T__34 = 35
     T__35 = 36
-    Data_type = 37
+    DATA_TYPE = 37
     BOOLEANLITERAL = 38
     IDENTIFIER = 39
     INTLITERAL = 40
@@ -228,7 +228,7 @@ class SimpleCodeLexer(Lexer):
             "'>='", "'=='", "'!='", "'&&'", "'||'" ]
 
     symbolicNames = [ "<INVALID>",
-            "Data_type", "BOOLEANLITERAL", "IDENTIFIER", "INTLITERAL", "Decimal_Literal", 
+            "DATA_TYPE", "BOOLEANLITERAL", "IDENTIFIER", "INTLITERAL", "Decimal_Literal", 
             "Hex_Literal", "CHAR", "CHARLITERAL", "STRINGLITERAL", "DIGIT", 
             "ALPHA", "HEX_DIGIT", "White", "Newline", "LineComment", "BlockComment" ]
 
@@ -237,7 +237,7 @@ class SimpleCodeLexer(Lexer):
                   "T__14", "T__15", "T__16", "T__17", "T__18", "T__19", 
                   "T__20", "T__21", "T__22", "T__23", "T__24", "T__25", 
                   "T__26", "T__27", "T__28", "T__29", "T__30", "T__31", 
-                  "T__32", "T__33", "T__34", "T__35", "Data_type", "BOOLEANLITERAL", 
+                  "T__32", "T__33", "T__34", "T__35", "DATA_TYPE", "BOOLEANLITERAL", 
                   "IDENTIFIER", "INTLITERAL", "Decimal_Literal", "Hex_Literal", 
                   "CHAR", "CHARLITERAL", "STRINGLITERAL", "DIGIT", "ALPHA", 
                   "HEX_DIGIT", "White", "Newline", "LineComment", "BlockComment" ]

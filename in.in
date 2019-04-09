@@ -1,10 +1,4 @@
 class Program {
-    int main(){
-        int v;
-        v = 1;
-        v = "string";
-        v = 'a';
-        v = true;
-        return 0;
-    }
+    int i	// missing semicolon
 }
+
