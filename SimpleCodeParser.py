@@ -35,7 +35,7 @@ def serializedATN():
         buf.write("\5\23\u00fe\n\23\3\24\3\24\3\25\3\25\3\26\3\26\3\27\3")
         buf.write("\27\3\27\2\3\36\30\2\4\6\b\n\f\16\20\22\24\26\30\32\34")
         buf.write("\36 \"$&(*,\2\b\4\2\f\f\'\'\4\2\22\22\26\27\3\2\37\"\3")
-        buf.write("\2#$\3\2%&\5\2))++--\2\u0117\2.\3\2\2\2\4?\3\2\2\2\6K")
+        buf.write("\2#$\3\2%&\5\2((,,..\2\u0117\2.\3\2\2\2\4?\3\2\2\2\6K")
         buf.write("\3\2\2\2\bU\3\2\2\2\n\\\3\2\2\2\f^\3\2\2\2\16h\3\2\2\2")
         buf.write("\20w\3\2\2\2\22\u00a5\3\2\2\2\24\u00a7\3\2\2\2\26\u00bd")
         buf.write("\3\2\2\2\30\u00bf\3\2\2\2\32\u00c9\3\2\2\2\34\u00d1\3")
@@ -48,17 +48,17 @@ def serializedATN():
         buf.write("\2<:\3\2\2\2=>\7\6\2\2>\3\3\2\2\2?@\7\'\2\2@A\7\7\2\2")
         buf.write("AF\5\n\6\2BC\7\b\2\2CE\5\n\6\2DB\3\2\2\2EH\3\2\2\2FD\3")
         buf.write("\2\2\2FG\3\2\2\2GI\3\2\2\2HF\3\2\2\2IJ\7\t\2\2J\5\3\2")
-        buf.write("\2\2KL\5\b\5\2LM\7\7\2\2MN\7,\2\2NP\7\n\2\2OQ\5\f\7\2")
+        buf.write("\2\2KL\5\b\5\2LM\7\7\2\2MN\7/\2\2NP\7\n\2\2OQ\5\f\7\2")
         buf.write("PO\3\2\2\2PQ\3\2\2\2QR\3\2\2\2RS\7\13\2\2ST\5\16\b\2T")
-        buf.write("\7\3\2\2\2UV\t\2\2\2V\t\3\2\2\2W]\7,\2\2XY\7,\2\2YZ\7")
-        buf.write("\r\2\2Z[\7-\2\2[]\7\16\2\2\\W\3\2\2\2\\X\3\2\2\2]\13\3")
-        buf.write("\2\2\2^_\7\'\2\2_e\7,\2\2`a\7\b\2\2ab\7\'\2\2bd\7,\2\2")
+        buf.write("\7\3\2\2\2UV\t\2\2\2V\t\3\2\2\2W]\7/\2\2XY\7/\2\2YZ\7")
+        buf.write("\r\2\2Z[\7(\2\2[]\7\16\2\2\\W\3\2\2\2\\X\3\2\2\2]\13\3")
+        buf.write("\2\2\2^_\7\'\2\2_e\7/\2\2`a\7\b\2\2ab\7\'\2\2bd\7/\2\2")
         buf.write("c`\3\2\2\2dg\3\2\2\2ec\3\2\2\2ef\3\2\2\2f\r\3\2\2\2ge")
         buf.write("\3\2\2\2hl\7\5\2\2ik\5\20\t\2ji\3\2\2\2kn\3\2\2\2lj\3")
         buf.write("\2\2\2lm\3\2\2\2mr\3\2\2\2nl\3\2\2\2oq\5\22\n\2po\3\2")
         buf.write("\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2su\3\2\2\2tr\3\2\2\2")
-        buf.write("uv\7\6\2\2v\17\3\2\2\2wx\7\'\2\2x}\7,\2\2yz\7\b\2\2z|")
-        buf.write("\7,\2\2{y\3\2\2\2|\177\3\2\2\2}{\3\2\2\2}~\3\2\2\2~\u0080")
+        buf.write("uv\7\6\2\2v\17\3\2\2\2wx\7\'\2\2x}\7/\2\2yz\7\b\2\2z|")
+        buf.write("\7/\2\2{y\3\2\2\2|\177\3\2\2\2}{\3\2\2\2}~\3\2\2\2~\u0080")
         buf.write("\3\2\2\2\177}\3\2\2\2\u0080\u0081\7\t\2\2\u0081\21\3\2")
         buf.write("\2\2\u0082\u0083\5\34\17\2\u0083\u0084\5\24\13\2\u0084")
         buf.write("\u0085\5\36\20\2\u0085\u0086\7\t\2\2\u0086\u00a6\3\2\2")
@@ -67,7 +67,7 @@ def serializedATN():
         buf.write("\u008d\5\36\20\2\u008d\u008e\7\13\2\2\u008e\u0091\5\16")
         buf.write("\b\2\u008f\u0090\7\20\2\2\u0090\u0092\5\16\b\2\u0091\u008f")
         buf.write("\3\2\2\2\u0091\u0092\3\2\2\2\u0092\u00a6\3\2\2\2\u0093")
-        buf.write("\u0094\7\21\2\2\u0094\u0095\7,\2\2\u0095\u0096\7\22\2")
+        buf.write("\u0094\7\21\2\2\u0094\u0095\7/\2\2\u0095\u0096\7\22\2")
         buf.write("\2\u0096\u0097\5\36\20\2\u0097\u0098\7\b\2\2\u0098\u0099")
         buf.write("\5\36\20\2\u0099\u009a\5\16\b\2\u009a\u00a6\3\2\2\2\u009b")
         buf.write("\u009d\7\23\2\2\u009c\u009e\5\36\20\2\u009d\u009c\3\2")
@@ -81,18 +81,18 @@ def serializedATN():
         buf.write("\u00a9\u00aa\5\32\16\2\u00aa\u00ac\7\n\2\2\u00ab\u00ad")
         buf.write("\5\30\r\2\u00ac\u00ab\3\2\2\2\u00ac\u00ad\3\2\2\2\u00ad")
         buf.write("\u00ae\3\2\2\2\u00ae\u00af\7\13\2\2\u00af\u00be\3\2\2")
-        buf.write("\2\u00b0\u00b1\7\30\2\2\u00b1\u00bb\7*\2\2\u00b2\u00b3")
+        buf.write("\2\u00b0\u00b1\7\30\2\2\u00b1\u00bb\7-\2\2\u00b2\u00b3")
         buf.write("\7\b\2\2\u00b3\u00b8\5 \21\2\u00b4\u00b5\7\b\2\2\u00b5")
         buf.write("\u00b7\5 \21\2\u00b6\u00b4\3\2\2\2\u00b7\u00ba\3\2\2\2")
         buf.write("\u00b8\u00b6\3\2\2\2\u00b8\u00b9\3\2\2\2\u00b9\u00bc\3")
         buf.write("\2\2\2\u00ba\u00b8\3\2\2\2\u00bb\u00b2\3\2\2\2\u00bb\u00bc")
         buf.write("\3\2\2\2\u00bc\u00be\3\2\2\2\u00bd\u00a9\3\2\2\2\u00bd")
         buf.write("\u00b0\3\2\2\2\u00be\27\3\2\2\2\u00bf\u00c0\7\'\2\2\u00c0")
-        buf.write("\u00c6\7,\2\2\u00c1\u00c2\7\b\2\2\u00c2\u00c3\7\'\2\2")
-        buf.write("\u00c3\u00c5\7,\2\2\u00c4\u00c1\3\2\2\2\u00c5\u00c8\3")
+        buf.write("\u00c6\7/\2\2\u00c1\u00c2\7\b\2\2\u00c2\u00c3\7\'\2\2")
+        buf.write("\u00c3\u00c5\7/\2\2\u00c4\u00c1\3\2\2\2\u00c5\u00c8\3")
         buf.write("\2\2\2\u00c6\u00c4\3\2\2\2\u00c6\u00c7\3\2\2\2\u00c7\31")
-        buf.write("\3\2\2\2\u00c8\u00c6\3\2\2\2\u00c9\u00ca\7,\2\2\u00ca")
-        buf.write("\33\3\2\2\2\u00cb\u00d2\7,\2\2\u00cc\u00cd\7,\2\2\u00cd")
+        buf.write("\3\2\2\2\u00c8\u00c6\3\2\2\2\u00c9\u00ca\7/\2\2\u00ca")
+        buf.write("\33\3\2\2\2\u00cb\u00d2\7/\2\2\u00cc\u00cd\7/\2\2\u00cd")
         buf.write("\u00ce\7\r\2\2\u00ce\u00cf\5\36\20\2\u00cf\u00d0\7\16")
         buf.write("\2\2\u00d0\u00d2\3\2\2\2\u00d1\u00cb\3\2\2\2\u00d1\u00cc")
         buf.write("\3\2\2\2\u00d2\35\3\2\2\2\u00d3\u00d4\b\20\1\2\u00d4\u00e0")
@@ -106,7 +106,7 @@ def serializedATN():
         buf.write("\5\"\22\2\u00e3\u00e4\5\36\20\7\u00e4\u00e6\3\2\2\2\u00e5")
         buf.write("\u00e1\3\2\2\2\u00e6\u00e9\3\2\2\2\u00e7\u00e5\3\2\2\2")
         buf.write("\u00e7\u00e8\3\2\2\2\u00e8\37\3\2\2\2\u00e9\u00e7\3\2")
-        buf.write("\2\2\u00ea\u00ed\5\36\20\2\u00eb\u00ed\7*\2\2\u00ec\u00ea")
+        buf.write("\2\2\u00ea\u00ed\5\36\20\2\u00eb\u00ed\7-\2\2\u00ec\u00ea")
         buf.write("\3\2\2\2\u00ec\u00eb\3\2\2\2\u00ed!\3\2\2\2\u00ee\u00f3")
         buf.write("\5$\23\2\u00ef\u00f3\5&\24\2\u00f0\u00f3\5(\25\2\u00f1")
         buf.write("\u00f3\5*\26\2\u00f2\u00ee\3\2\2\2\u00f2\u00ef\3\2\2\2")
@@ -150,10 +150,10 @@ class SimpleCodeParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "Data_type", "CHAR", "CHARLITERAL", "STRINGLITERAL", 
-                      "BOOLEANLITERAL", "IDENTIFIER", "INTLITERAL", "Decimal_Literal", 
-                      "Hex_Literal", "ALPHA", "DIGIT", "HEX_DIGIT", "White", 
-                      "Newline", "LineComment", "BlockComment" ]
+                      "<INVALID>", "Data_type", "INTLITERAL", "Decimal_Literal", 
+                      "Hex_Literal", "CHAR", "CHARLITERAL", "STRINGLITERAL", 
+                      "BOOLEANLITERAL", "IDENTIFIER", "DIGIT", "ALPHA", 
+                      "HEX_DIGIT", "White", "Newline", "LineComment", "BlockComment" ]
 
     RULE_program = 0
     RULE_field_decl = 1
@@ -222,16 +222,16 @@ class SimpleCodeParser ( Parser ):
     T__34=35
     T__35=36
     Data_type=37
-    CHAR=38
-    CHARLITERAL=39
-    STRINGLITERAL=40
-    BOOLEANLITERAL=41
-    IDENTIFIER=42
-    INTLITERAL=43
-    Decimal_Literal=44
-    Hex_Literal=45
-    ALPHA=46
-    DIGIT=47
+    INTLITERAL=38
+    Decimal_Literal=39
+    Hex_Literal=40
+    CHAR=41
+    CHARLITERAL=42
+    STRINGLITERAL=43
+    BOOLEANLITERAL=44
+    IDENTIFIER=45
+    DIGIT=46
+    ALPHA=47
     HEX_DIGIT=48
     White=49
     Newline=50
@@ -904,7 +904,7 @@ class SimpleCodeParser ( Parser ):
                 self.state = 155
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SimpleCodeParser.T__7) | (1 << SimpleCodeParser.T__21) | (1 << SimpleCodeParser.T__22) | (1 << SimpleCodeParser.T__23) | (1 << SimpleCodeParser.CHARLITERAL) | (1 << SimpleCodeParser.BOOLEANLITERAL) | (1 << SimpleCodeParser.IDENTIFIER) | (1 << SimpleCodeParser.INTLITERAL))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SimpleCodeParser.T__7) | (1 << SimpleCodeParser.T__21) | (1 << SimpleCodeParser.T__22) | (1 << SimpleCodeParser.T__23) | (1 << SimpleCodeParser.INTLITERAL) | (1 << SimpleCodeParser.CHARLITERAL) | (1 << SimpleCodeParser.BOOLEANLITERAL) | (1 << SimpleCodeParser.IDENTIFIER))) != 0):
                     self.state = 154
                     self.expr(0)
 
@@ -1425,7 +1425,7 @@ class SimpleCodeParser ( Parser ):
             self.state = 234
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [SimpleCodeParser.T__7, SimpleCodeParser.T__21, SimpleCodeParser.T__22, SimpleCodeParser.T__23, SimpleCodeParser.CHARLITERAL, SimpleCodeParser.BOOLEANLITERAL, SimpleCodeParser.IDENTIFIER, SimpleCodeParser.INTLITERAL]:
+            if token in [SimpleCodeParser.T__7, SimpleCodeParser.T__21, SimpleCodeParser.T__22, SimpleCodeParser.T__23, SimpleCodeParser.INTLITERAL, SimpleCodeParser.CHARLITERAL, SimpleCodeParser.BOOLEANLITERAL, SimpleCodeParser.IDENTIFIER]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 232
                 self.expr(0)
@@ -1767,7 +1767,7 @@ class SimpleCodeParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 259
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SimpleCodeParser.CHARLITERAL) | (1 << SimpleCodeParser.BOOLEANLITERAL) | (1 << SimpleCodeParser.INTLITERAL))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SimpleCodeParser.INTLITERAL) | (1 << SimpleCodeParser.CHARLITERAL) | (1 << SimpleCodeParser.BOOLEANLITERAL))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)

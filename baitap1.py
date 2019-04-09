@@ -16,10 +16,10 @@ def printOutChildNode(child, lexers):
     if (token in filterList):
         print('{0} {1} {2}'.format(line, token, lexer))
     else:
+        print(token)
         print('{0} {1}'.format(line, lexer))
 
 def flattenTree(parent, lexers):
-    print(parent.getText())
     for i in range(parent.getChildCount()):
         child = parent.getChild(i)
         if (isinstance(child, TerminalNodeImpl)) and (child.getText().strip() != ''):

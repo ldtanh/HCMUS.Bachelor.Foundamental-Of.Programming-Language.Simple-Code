@@ -22,17 +22,17 @@ rel_op : '<' | '>' | '<=' | '>=' ;
 eq_op : '==' | '!=' ;
 cond_op : '&&' | '||' ;
 literal : INTLITERAL | CHARLITERAL | BOOLEANLITERAL ;
+INTLITERAL : Decimal_Literal | Hex_Literal ;
+Decimal_Literal : DIGIT DIGIT* ;
+Hex_Literal : '0x' HEX_DIGIT+ ;
 CHAR: ~['\\\r\n] | '\\' ['"?abfnrtv\\];
 CHARLITERAL : '\'' CHAR '\''  ;
 STRINGLITERAL : '"' CHAR* '"' ;
 BOOLEANLITERAL : 'true' | 'false' ;
 IDENTIFIER : ALPHA (ALPHA | DIGIT)* ;
-INTLITERAL : Decimal_Literal | Hex_Literal ;
-Decimal_Literal : DIGIT DIGIT* ;
-Hex_Literal : '0x' HEX_DIGIT+ ;
 
-ALPHA : [a-zA-Z_];
 DIGIT : [0-9] ;
+ALPHA : [a-zA-Z_];
 HEX_DIGIT : [0-9a-fA-F] ;
 
 White : [ \t]+ -> skip ;
