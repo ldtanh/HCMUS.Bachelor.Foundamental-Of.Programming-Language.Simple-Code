@@ -35,22 +35,22 @@ def serializedATN():
         buf.write("\5\23\u00fe\n\23\3\24\3\24\3\25\3\25\3\26\3\26\3\27\3")
         buf.write("\27\3\27\2\3\36\30\2\4\6\b\n\f\16\20\22\24\26\30\32\34")
         buf.write("\36 \"$&(*,\2\b\4\2\f\f\'\'\4\2\22\22\26\27\3\2\37\"\3")
-        buf.write("\2#$\3\2%&\5\2))--\62\62\2\u0117\2.\3\2\2\2\4?\3\2\2\2")
-        buf.write("\6K\3\2\2\2\bU\3\2\2\2\n\\\3\2\2\2\f^\3\2\2\2\16h\3\2")
-        buf.write("\2\2\20w\3\2\2\2\22\u00a5\3\2\2\2\24\u00a7\3\2\2\2\26")
-        buf.write("\u00bd\3\2\2\2\30\u00bf\3\2\2\2\32\u00c9\3\2\2\2\34\u00d1")
-        buf.write("\3\2\2\2\36\u00df\3\2\2\2 \u00ec\3\2\2\2\"\u00f2\3\2\2")
-        buf.write("\2$\u00fd\3\2\2\2&\u00ff\3\2\2\2(\u0101\3\2\2\2*\u0103")
-        buf.write("\3\2\2\2,\u0105\3\2\2\2./\7\3\2\2/\60\7\4\2\2\60\64\7")
-        buf.write("\5\2\2\61\63\5\4\3\2\62\61\3\2\2\2\63\66\3\2\2\2\64\62")
-        buf.write("\3\2\2\2\64\65\3\2\2\2\65:\3\2\2\2\66\64\3\2\2\2\679\5")
-        buf.write("\6\4\28\67\3\2\2\29<\3\2\2\2:8\3\2\2\2:;\3\2\2\2;=\3\2")
-        buf.write("\2\2<:\3\2\2\2=>\7\6\2\2>\3\3\2\2\2?@\7\'\2\2@A\7\7\2")
-        buf.write("\2AF\5\n\6\2BC\7\b\2\2CE\5\n\6\2DB\3\2\2\2EH\3\2\2\2F")
-        buf.write("D\3\2\2\2FG\3\2\2\2GI\3\2\2\2HF\3\2\2\2IJ\7\t\2\2J\5\3")
-        buf.write("\2\2\2KL\5\b\5\2LM\7\7\2\2MN\7(\2\2NP\7\n\2\2OQ\5\f\7")
-        buf.write("\2PO\3\2\2\2PQ\3\2\2\2QR\3\2\2\2RS\7\13\2\2ST\5\16\b\2")
-        buf.write("T\7\3\2\2\2UV\t\2\2\2V\t\3\2\2\2W]\7(\2\2XY\7(\2\2YZ\7")
+        buf.write("\2#$\3\2%&\5\2))--//\2\u0117\2.\3\2\2\2\4?\3\2\2\2\6K")
+        buf.write("\3\2\2\2\bU\3\2\2\2\n\\\3\2\2\2\f^\3\2\2\2\16h\3\2\2\2")
+        buf.write("\20w\3\2\2\2\22\u00a5\3\2\2\2\24\u00a7\3\2\2\2\26\u00bd")
+        buf.write("\3\2\2\2\30\u00bf\3\2\2\2\32\u00c9\3\2\2\2\34\u00d1\3")
+        buf.write("\2\2\2\36\u00df\3\2\2\2 \u00ec\3\2\2\2\"\u00f2\3\2\2\2")
+        buf.write("$\u00fd\3\2\2\2&\u00ff\3\2\2\2(\u0101\3\2\2\2*\u0103\3")
+        buf.write("\2\2\2,\u0105\3\2\2\2./\7\3\2\2/\60\7\4\2\2\60\64\7\5")
+        buf.write("\2\2\61\63\5\4\3\2\62\61\3\2\2\2\63\66\3\2\2\2\64\62\3")
+        buf.write("\2\2\2\64\65\3\2\2\2\65:\3\2\2\2\66\64\3\2\2\2\679\5\6")
+        buf.write("\4\28\67\3\2\2\29<\3\2\2\2:8\3\2\2\2:;\3\2\2\2;=\3\2\2")
+        buf.write("\2<:\3\2\2\2=>\7\6\2\2>\3\3\2\2\2?@\7\'\2\2@A\7\7\2\2")
+        buf.write("AF\5\n\6\2BC\7\b\2\2CE\5\n\6\2DB\3\2\2\2EH\3\2\2\2FD\3")
+        buf.write("\2\2\2FG\3\2\2\2GI\3\2\2\2HF\3\2\2\2IJ\7\t\2\2J\5\3\2")
+        buf.write("\2\2KL\5\b\5\2LM\7\7\2\2MN\7(\2\2NP\7\n\2\2OQ\5\f\7\2")
+        buf.write("PO\3\2\2\2PQ\3\2\2\2QR\3\2\2\2RS\7\13\2\2ST\5\16\b\2T")
+        buf.write("\7\3\2\2\2UV\t\2\2\2V\t\3\2\2\2W]\7(\2\2XY\7(\2\2YZ\7")
         buf.write("\r\2\2Z[\7)\2\2[]\7\16\2\2\\W\3\2\2\2\\X\3\2\2\2]\13\3")
         buf.write("\2\2\2^_\7\'\2\2_e\7(\2\2`a\7\b\2\2ab\7\'\2\2bd\7(\2\2")
         buf.write("c`\3\2\2\2dg\3\2\2\2ec\3\2\2\2ef\3\2\2\2f\r\3\2\2\2ge")
@@ -152,8 +152,8 @@ class SimpleCodeParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "Data_type", "IDENTIFIER", "INTLITERAL", 
                       "Decimal_Literal", "Hex_Literal", "CHAR", "CHARLITERAL", 
-                      "STRINGLITERAL", "ALPHA", "DIGIT", "HEX_DIGIT", "BOOLEANLITERAL", 
-                      "White", "Newline", "LineComment" ]
+                      "STRINGLITERAL", "BOOLEANLITERAL", "ALPHA", "DIGIT", 
+                      "HEX_DIGIT", "White", "Newline", "LineComment" ]
 
     RULE_program = 0
     RULE_field_decl = 1
@@ -229,10 +229,10 @@ class SimpleCodeParser ( Parser ):
     CHAR=42
     CHARLITERAL=43
     STRINGLITERAL=44
-    ALPHA=45
-    DIGIT=46
-    HEX_DIGIT=47
-    BOOLEANLITERAL=48
+    BOOLEANLITERAL=45
+    ALPHA=46
+    DIGIT=47
+    HEX_DIGIT=48
     White=49
     Newline=50
     LineComment=51

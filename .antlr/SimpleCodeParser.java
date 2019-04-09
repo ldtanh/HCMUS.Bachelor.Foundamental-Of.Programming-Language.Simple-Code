@@ -22,8 +22,8 @@ public class SimpleCodeParser extends Parser {
 		T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, 
 		T__31=32, T__32=33, T__33=34, T__34=35, T__35=36, Data_type=37, IDENTIFIER=38, 
 		INTLITERAL=39, Decimal_Literal=40, Hex_Literal=41, CHAR=42, CHARLITERAL=43, 
-		STRINGLITERAL=44, ALPHA=45, DIGIT=46, HEX_DIGIT=47, BOOLEANLITERAL=48, 
-		White=49, Newline=50, LineComment=51;
+		STRINGLITERAL=44, BOOLEANLITERAL=45, ALPHA=46, DIGIT=47, HEX_DIGIT=48, 
+		White=49, Newline=50, LineComment=51, BlockComment=52;
 	public static final int
 		RULE_program = 0, RULE_field_decl = 1, RULE_method_decl = 2, RULE_method_decl_type = 3, 
 		RULE_variable = 4, RULE_method_params = 5, RULE_block = 6, RULE_var_decl = 7, 
@@ -50,8 +50,8 @@ public class SimpleCodeParser extends Parser {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, "Data_type", "IDENTIFIER", "INTLITERAL", "Decimal_Literal", "Hex_Literal", 
-		"CHAR", "CHARLITERAL", "STRINGLITERAL", "ALPHA", "DIGIT", "HEX_DIGIT", 
-		"BOOLEANLITERAL", "White", "Newline", "LineComment"
+		"CHAR", "CHARLITERAL", "STRINGLITERAL", "BOOLEANLITERAL", "ALPHA", "DIGIT", 
+		"HEX_DIGIT", "White", "Newline", "LineComment", "BlockComment"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -1510,7 +1510,7 @@ public class SimpleCodeParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\65\u0108\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\66\u0108\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\3\2\3\2\3\2\3\2\7\2"+
@@ -1531,10 +1531,10 @@ public class SimpleCodeParser extends Parser {
 		"\23\u00f9\n\23\r\23\16\23\u00fa\3\23\5\23\u00fe\n\23\3\24\3\24\3\25\3"+
 		"\25\3\26\3\26\3\27\3\27\3\27\2\3\36\30\2\4\6\b\n\f\16\20\22\24\26\30\32"+
 		"\34\36 \"$&(*,\2\b\4\2\f\f\'\'\4\2\22\22\26\27\3\2\37\"\3\2#$\3\2%&\5"+
-		"\2))--\62\62\2\u0117\2.\3\2\2\2\4?\3\2\2\2\6K\3\2\2\2\bU\3\2\2\2\n\\\3"+
-		"\2\2\2\f^\3\2\2\2\16h\3\2\2\2\20w\3\2\2\2\22\u00a5\3\2\2\2\24\u00a7\3"+
-		"\2\2\2\26\u00bd\3\2\2\2\30\u00bf\3\2\2\2\32\u00c9\3\2\2\2\34\u00d1\3\2"+
-		"\2\2\36\u00df\3\2\2\2 \u00ec\3\2\2\2\"\u00f2\3\2\2\2$\u00fd\3\2\2\2&\u00ff"+
+		"\2))--//\2\u0117\2.\3\2\2\2\4?\3\2\2\2\6K\3\2\2\2\bU\3\2\2\2\n\\\3\2\2"+
+		"\2\f^\3\2\2\2\16h\3\2\2\2\20w\3\2\2\2\22\u00a5\3\2\2\2\24\u00a7\3\2\2"+
+		"\2\26\u00bd\3\2\2\2\30\u00bf\3\2\2\2\32\u00c9\3\2\2\2\34\u00d1\3\2\2\2"+
+		"\36\u00df\3\2\2\2 \u00ec\3\2\2\2\"\u00f2\3\2\2\2$\u00fd\3\2\2\2&\u00ff"+
 		"\3\2\2\2(\u0101\3\2\2\2*\u0103\3\2\2\2,\u0105\3\2\2\2./\7\3\2\2/\60\7"+
 		"\4\2\2\60\64\7\5\2\2\61\63\5\4\3\2\62\61\3\2\2\2\63\66\3\2\2\2\64\62\3"+
 		"\2\2\2\64\65\3\2\2\2\65:\3\2\2\2\66\64\3\2\2\2\679\5\6\4\28\67\3\2\2\2"+

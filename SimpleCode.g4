@@ -29,12 +29,13 @@ Hex_Literal : '0x' HEX_DIGIT+ ;
 CHAR: . ;
 CHARLITERAL : '\'' CHAR '\''  ;
 STRINGLITERAL : '"' CHAR* '"' ;
+BOOLEANLITERAL : 'true' | 'false' ;
 
-ALPHA : [a-zA-Z] ;
+ALPHA : [a-zA-Z];
 DIGIT : [0-9] ;
 HEX_DIGIT : [0-9a-fA-F] ;
-BOOLEANLITERAL : 'true' | 'false' ;
 
 White : [ \t]+ -> skip ;
 Newline : ( '\r' '\n'? | '\n' ) -> skip ;
 LineComment : '//' ~[\r\n]* -> skip ;
+BlockComment : '/*' .*? '*/' -> skip ;

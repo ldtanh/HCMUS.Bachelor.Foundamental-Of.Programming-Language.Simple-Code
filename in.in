@@ -1,8 +1,9 @@
-class  Program   {
+class Program   {
     int main() {
         int v;
         v = 1;
         v = 'c';
+        v = "string";
         v = true;
         return 0; 
     }
