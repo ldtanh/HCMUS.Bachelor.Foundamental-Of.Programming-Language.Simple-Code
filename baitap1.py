@@ -6,7 +6,7 @@ import sys
 from antlr4.tree.Tree import TerminalNodeImpl
 from antlr4.error.ErrorListener import ErrorListener
 
-filterList = ['iden','INTLITERAL','CHARLITERAL','STRINGLITERAL','BOOLEANLITERAL']
+filterList = ['IDENTIFIER','INTLITERAL','CHARLITERAL','STRINGLITERAL','BOOLEANLITERAL']
 
 def printOutChildNode(child, lexers):
     global filterList

@@ -1,7 +1,7 @@
 grammar SimpleCode;           
 program  : 'class' ' ' 'Program' ' ' '{'  field_decl* method_decl*  '}' ;
 field_decl : Data_type ' ' variable (',' variable)* ';' ;
-method_decl: method_decl_type IDENTIFIER '(' method_params? ')' block ;
+method_decl: method_decl_type ' ' IDENTIFIER '(' method_params? ')' block ;
 method_decl_type: 'void' | Data_type ;
 variable : IDENTIFIER | IDENTIFIER '[' INTLITERAL ']' ;
 method_params : Data_type ' ' IDENTIFIER (',' Data_type ' ' IDENTIFIER)* ;
@@ -22,14 +22,14 @@ rel_op : '<' | '>' | '<=' | '>=' ;
 eq_op : '==' | '!=' ;
 cond_op : '&&' | '||' ;
 literal : INTLITERAL | CHARLITERAL | BOOLEANLITERAL ;
+BOOLEANLITERAL : 'true' | 'false' ;
+IDENTIFIER : ALPHA (ALPHA | DIGIT)* ;
 INTLITERAL : Decimal_Literal | Hex_Literal ;
 Decimal_Literal : DIGIT DIGIT* ;
 Hex_Literal : '0x' HEX_DIGIT+ ;
 CHAR: ~['\\\r\n] | '\\' ['"?abfnrtv\\];
 CHARLITERAL : '\'' CHAR '\''  ;
 STRINGLITERAL : '"' CHAR* '"' ;
-BOOLEANLITERAL : 'true' | 'false' ;
-IDENTIFIER : ALPHA (ALPHA | DIGIT)* ;
 
 DIGIT : [0-9] ;
 ALPHA : [a-zA-Z_];
