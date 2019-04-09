@@ -206,21 +206,3 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleCodeParser#int_literal.
-    def enterInt_literal(self, ctx:SimpleCodeParser.Int_literalContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#int_literal.
-    def exitInt_literal(self, ctx:SimpleCodeParser.Int_literalContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#string_literal.
-    def enterString_literal(self, ctx:SimpleCodeParser.String_literalContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#string_literal.
-    def exitString_literal(self, ctx:SimpleCodeParser.String_literalContext):
-        pass
-
-
