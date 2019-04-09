@@ -1,5 +1,10 @@
-// Random tokens
-{-123-a35,id3a,+*;}[||===!=()&&]<><=>==
-a[24]='7'; n!=if;
-false,-if;true32;
-forpar
+class Program {
+    int main(){
+        int v;
+        v = 1;
+        v = "string";
+        v = 'a';
+        v = true;
+        return 0;
+    }
+}
