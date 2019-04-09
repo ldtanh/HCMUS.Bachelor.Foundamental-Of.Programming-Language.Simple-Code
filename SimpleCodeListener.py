@@ -35,6 +35,15 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleCodeParser#method_decl_type.
+    def enterMethod_decl_type(self, ctx:SimpleCodeParser.Method_decl_typeContext):
+        pass
+
+    # Exit a parse tree produced by SimpleCodeParser#method_decl_type.
+    def exitMethod_decl_type(self, ctx:SimpleCodeParser.Method_decl_typeContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleCodeParser#variable.
     def enterVariable(self, ctx:SimpleCodeParser.VariableContext):
         pass
@@ -104,15 +113,6 @@ class SimpleCodeListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleCodeParser#method_call_params.
     def exitMethod_call_params(self, ctx:SimpleCodeParser.Method_call_paramsContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#data_type.
-    def enterData_type(self, ctx:SimpleCodeParser.Data_typeContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#data_type.
-    def exitData_type(self, ctx:SimpleCodeParser.Data_typeContext):
         pass
 
 

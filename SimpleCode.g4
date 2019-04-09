@@ -1,16 +1,17 @@
 grammar SimpleCode;           
-program  : 'class' ' ' 'Program' ' ' '{'  field_decl* method_decl*  '}' ;
-field_decl : data_type variable (',' variable)* ';' ;
-method_decl: ('void' | data_type)  Identifier '(' method_params? ')' block ;
+program  : 'class' 'Program' '{'  field_decl* method_decl*  '}' ;
+field_decl : Data_type ' ' variable (',' variable)* ';' ;
+method_decl: method_decl_type ' ' Identifier '(' method_params? ')' block ;
+method_decl_type: 'void' | Data_type ;
 variable : Identifier | Identifier '[' int_literal ']' ;
-method_params : data_type Identifier (',' data_type Identifier)* ;
+method_params : Data_type Identifier (',' Data_type Identifier)* ;
 block : '{' var_decl* statement* '}' ;
-var_decl : data_type Identifier (',' Identifier)* ';';
+var_decl : Data_type Identifier (',' Identifier)* ';';
 statement : location assign_op expr ';' | method_call ';' | 'if' '(' (expr) ')' block ('else' block)? | 'for' Identifier '=' (expr) ',' (expr) block | 'return' (expr)? ';' | 'break' ';' | 'continue' ';' | block ;
 assign_op : '=' | '+=' | '-=' ;
 method_call : method_name '(' method_call_params? ')' | 'callout' (string_literal (',' callout_arg (',' callout_arg)*)?) ;
-method_call_params : data_type Identifier (',' data_type Identifier)* ;
-data_type : INT | BOOL ;
+method_call_params : Data_type Identifier (',' Data_type Identifier)* ;
+Data_type : 'int' | 'boolean' ;
 method_name : Identifier ;
 location : Identifier | Identifier '[' expr ']' ;
 expr : location | method_call | literal | expr bin_op expr | '-' expr | '!' expr | '(' expr ')' ;
@@ -34,9 +35,6 @@ string_literal : '"' CHAR* '"' ;
 ALPHA : [a-zA-Z] ;
 DIGIT : [0-9] ;
 HEX_DIGIT : [0-9a-fA-F] ;
-
-INT : 'int' ;
-BOOL : 'boolean' ;
 
 White : [ \t]+ -> skip ;
 Newline : ( '\r' '\n'? | '\n' ) -> skip ;
