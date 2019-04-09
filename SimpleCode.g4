@@ -1,7 +1,7 @@
 grammar SimpleCode;           
 program  : 'class' ' ' 'Program' ' ' '{'  field_decl* method_decl*  '}' ;
 field_decl : Data_type ' ' variable (',' variable)* ';' ;
-method_decl: method_decl_type ' ' IDENTIFIER '(' method_params? ')' block ;
+method_decl: method_decl_type IDENTIFIER '(' method_params? ')' block ;
 method_decl_type: 'void' | Data_type ;
 variable : IDENTIFIER | IDENTIFIER '[' INTLITERAL ']' ;
 method_params : Data_type ' ' IDENTIFIER (',' Data_type ' ' IDENTIFIER)* ;
