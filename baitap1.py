@@ -6,8 +6,11 @@ import sys
 
 class SimpleCodePrintListener(SimpleCodeListener):
     def enterProgram(self, ctx):
-        print("SimpleCode: %s" % ctx)
-
+        print("Enter Program: %s" % ctx)
+    
+    def enterMethod_decl(self, ctx):
+        print("Enter Method Declaration: {0}".format(ctx))
+        
 def main():
     lexer = SimpleCodeLexer(StdinStream())
     stream = CommonTokenStream(lexer)

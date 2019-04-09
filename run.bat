@@ -1,3 +1,4 @@
+cls
 rm *.interp
 rm SimpleCode.tokens
 rm SimpleCodeLexer*
