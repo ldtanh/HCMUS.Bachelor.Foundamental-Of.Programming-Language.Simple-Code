@@ -53,6 +53,15 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleCodeParser#array_decl.
+    def enterArray_decl(self, ctx:SimpleCodeParser.Array_declContext):
+        pass
+
+    # Exit a parse tree produced by SimpleCodeParser#array_decl.
+    def exitArray_decl(self, ctx:SimpleCodeParser.Array_declContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleCodeParser#method_params.
     def enterMethod_params(self, ctx:SimpleCodeParser.Method_paramsContext):
         pass

@@ -1,16 +1,17 @@
 grammar SimpleCode;
 
 program:
-	CLASS ' '* PROGRAM ' '* '{' ' '* field_decl* method_decl* ' '* '}';
-field_decl: DATA_TYPE ' ' variable (',' variable)* ';';
+	CLASS SPACE+ PROGRAM SPACE+ '{' ' '* field_decl* method_decl* ' '* '}';
+field_decl: DATA_TYPE SPACE+ variable (',' variable)*? ';';
 method_decl:
-	method_decl_type ' ' IDENTIFIER '(' method_params? ')' ' '* block;
+	method_decl_type SPACE+ IDENTIFIER '(' method_params? ')' ' '* block;
 method_decl_type: VOID | DATA_TYPE;
-variable: IDENTIFIER | IDENTIFIER '[' INTLITERAL ']';
+variable: array_decl | IDENTIFIER ;
+array_decl: IDENTIFIER '[' INTLITERAL ']' ;
 method_params:
-	DATA_TYPE ' ' IDENTIFIER (',' DATA_TYPE ' ' IDENTIFIER)*;
+	DATA_TYPE SPACE+ IDENTIFIER (',' DATA_TYPE ' ' IDENTIFIER)*;
 block: '{' (var_decl | statement)* '}';
-var_decl: DATA_TYPE ' ' IDENTIFIER (',' IDENTIFIER)* ';';
+var_decl: DATA_TYPE SPACE+ variable (',' variable)* ';';
 statement:
 	location ' '* assign_op ' '* expr ';' ' '*
 	| method_call
@@ -23,14 +24,14 @@ statement:
 assign_op: '=' | '+=' | '-=';
 method_call:
 	method_name '(' method_call_params? ')' ';'
-	| CALLOUT ' '* (
+	| CALLOUT SPACE+ (
 		STRINGLITERAL (' '* ',' callout_arg (',' callout_arg)*)?
 	);
 method_call_params:
 	IDENTIFIER (',' ' '* IDENTIFIER)*;
 DATA_TYPE: INT | BOOLEAN;
 method_name: IDENTIFIER;
-location: IDENTIFIER | IDENTIFIER '[' expr ']';
+location: IDENTIFIER | (IDENTIFIER '[' expr ']');
 expr:
 	location
 	| method_call
