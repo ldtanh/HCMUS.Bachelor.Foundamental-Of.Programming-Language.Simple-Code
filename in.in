@@ -1,7 +1,6 @@
 class Program {
   void main() {
-    int a[10];
-    a = b + 1
+    int a;
+    int a;  // semanitcally bad, but gramatically ok
   }
 }
-

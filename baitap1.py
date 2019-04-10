@@ -28,11 +28,11 @@ def flattenTree(parent, lexers):
         return
     for i in range(parent.getChildCount()):
         child = parent.getChild(i)
-        if (not isinstance(child, ErrorNodeImpl)):
-            if (isinstance(child, TerminalNodeImpl)) and (child.getText().strip() != ''):
-                printOutChildNode(child, lexers)
-            else:
-                flattenTree(child, lexers)
+        # if (not isinstance(child, ErrorNodeImpl)):
+        if (isinstance(child, TerminalNodeImpl)) and (child.getText().strip() != ''):
+            printOutChildNode(child, lexers)
+        else:
+            flattenTree(child, lexers)
 
 
 class MyErrorListener(ErrorListener):
@@ -99,6 +99,7 @@ class MyErrorListener(ErrorListener):
 def main(argv):
     input_stream = FileStream(argv[2])
     lexer = SimpleCodeLexer(input_stream)
+    print(lexer, type(lexer))
     stream = CommonTokenStream(lexer)
     parser = SimpleCodeParser(stream)
     if (int(sys.argv[1]) == 1):

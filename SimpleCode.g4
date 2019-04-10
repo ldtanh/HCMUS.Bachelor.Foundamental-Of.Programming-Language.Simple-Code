@@ -2,7 +2,7 @@ grammar SimpleCode;
 
 program:
 	CLASS SPACE+ PROGRAM SPACE+ '{' SPACE* field_decl* method_decl* SPACE* '}';
-field_decl: DATA_TYPE SPACE+ variable (',' variable)*? ';';
+field_decl: DATA_TYPE SPACE+ variable (',' variable)*? ';' SPACE*;
 method_decl:
 	method_decl_type SPACE+ IDENTIFIER '(' method_params? ')' SPACE* block;
 method_decl_type: VOID | DATA_TYPE;
@@ -13,7 +13,7 @@ method_params:
 block: '{' (var_decl | statement)* '}';
 var_decl: DATA_TYPE SPACE+ variable (',' variable)* ';';
 statement:
-	location SPACE* assign_op SPACE* expr ';' SPACE*
+	location SPACE* assign_op SPACE* expr ';'
 	| method_call
 	| IF SPACE* '(' expr ')' SPACE* block (ELSE SPACE* block)?
 	| FOR SPACE* IDENTIFIER SPACE* '=' SPACE* expr SPACE* ',' SPACE* expr SPACE* block
@@ -24,8 +24,8 @@ statement:
 assign_op : '=' | '+=' | '-=';
 method_call:
 	method_name '(' method_call_params? ')' ';'
-	| CALLOUT SPACE+ (
-		STRINGLITERAL (' '* ',' callout_arg (',' callout_arg)*)?
+	| CALLOUT SPACE* '(' SPACE* (
+		STRINGLITERAL SPACE* (',' SPACE* callout_arg (',' callout_arg)*)? ')' SPACE* ';' SPACE*
 	);
 method_call_params:
 	IDENTIFIER (',' SPACE* IDENTIFIER)*;
@@ -54,8 +54,6 @@ TAB: '\t';
 CLASS: 'class';
 PROGRAM: 'Program';
 VOID: 'void';
-TRUE: 'true';
-FALSE: 'false';
 IF: 'if';
 ELSE: 'else';
 FOR: 'for';
@@ -66,8 +64,8 @@ CALLOUT: 'callout';
 INT: 'int';
 BOOLEAN: 'boolean';
 
-literal: INTLITERAL | CHARLITERAL | BOOLEANLITERAL;
-BOOLEANLITERAL: TRUE | FALSE;
+literal: INTLITERAL | CHARLITERAL | BOOLEANLITERAL | STRINGLITERAL;
+BOOLEANLITERAL: 'true' | 'false';
 IDENTIFIER: ALPHA (ALPHA | DIGIT)*;
 INTLITERAL: DECIMALLITERAL | HEXLITERAL;
 DECIMALLITERAL: DIGIT DIGIT*;
