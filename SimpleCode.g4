@@ -1,41 +1,85 @@
-grammar SimpleCode;           
-program  : 'class' ' ' 'Program' ' ' '{' ' '* field_decl* method_decl* ' '* '}' ;
-field_decl : DATA_TYPE ' ' variable (',' variable)* ';' ;
-method_decl: method_decl_type ' ' IDENTIFIER '(' method_params? ')' ' '* block ;
-method_decl_type: 'void' | DATA_TYPE ;
-variable : IDENTIFIER | IDENTIFIER '[' INTLITERAL ']' ;
-method_params : DATA_TYPE ' ' IDENTIFIER (',' DATA_TYPE ' ' IDENTIFIER)* ;
-block : '{' (var_decl | statement)* '}' ;
-var_decl : DATA_TYPE ' ' IDENTIFIER (',' IDENTIFIER)* ';';
-statement : location assign_op expr ';' | method_call ';' | 'if' '(' expr ')' block ('else' block)? | 'for' ' '  IDENTIFIER '=' expr ',' expr block | 'return' ' ' (expr)? ';' | 'break' ';' | 'continue' ';' | block ;
-assign_op : '=' | '+=' | '-=' ;
-method_call : method_name '(' method_call_params? ')' | 'callout' ' ' (STRINGLITERAL (',' callout_arg (',' callout_arg)*)?) ;
-method_call_params : DATA_TYPE ' ' IDENTIFIER (',' DATA_TYPE ' ' IDENTIFIER)* ;
-DATA_TYPE : 'int' | 'boolean' ;
-method_name : IDENTIFIER ;
-location : IDENTIFIER | IDENTIFIER '[' expr ']' ;
-expr : location | method_call | literal | expr bin_op expr | '-' expr | '!' expr | '(' expr ')' ;
-callout_arg : expr | STRINGLITERAL ;
-bin_op : arith_op | rel_op | eq_op | cond_op ;
-arith_op : '+' | '-' | '*' | '/' | '%' ;
-rel_op : '<' | '>' | '<=' | '>=' ;
-eq_op : '==' | '!=' ;
-cond_op : '&&' | '||' ;
-literal : INTLITERAL | CHARLITERAL | BOOLEANLITERAL ;
-BOOLEANLITERAL : 'true' | 'false' ;
-IDENTIFIER : ALPHA (ALPHA | DIGIT)* ;
-INTLITERAL : Decimal_Literal | Hex_Literal ;
-Decimal_Literal : DIGIT DIGIT* ;
-Hex_Literal : '0x' HEX_DIGIT+ ;
+grammar SimpleCode;
+
+program:
+	CLASS ' '* PROGRAM ' '* '{' ' '* field_decl* method_decl* ' '* '}';
+field_decl: DATA_TYPE ' ' variable (',' variable)* ';';
+method_decl:
+	method_decl_type ' ' IDENTIFIER '(' method_params? ')' ' '* block;
+method_decl_type: VOID | DATA_TYPE;
+variable: IDENTIFIER | IDENTIFIER '[' INTLITERAL ']';
+method_params:
+	DATA_TYPE ' ' IDENTIFIER (',' DATA_TYPE ' ' IDENTIFIER)*;
+block: '{' (var_decl | statement)* '}';
+var_decl: DATA_TYPE ' ' IDENTIFIER (',' IDENTIFIER)* ';';
+statement:
+	location ' '* assign_op ' '* expr ';' ' '*
+	| method_call
+	| IF ' '* '(' expr ')' ' '* block (ELSE ' '* block)?
+	| FOR ' '* IDENTIFIER ' '* '=' ' '* expr ' '* ',' ' '* expr ' '* block
+	| RETURN ' '* (expr)? ';'
+	| BREAK ' '* ';'
+	| CONTINUE ' '* ';'
+	| block;
+assign_op: '=' | '+=' | '-=';
+method_call:
+	method_name '(' method_call_params? ')' ';'
+	| CALLOUT ' '* (
+		STRINGLITERAL (' '* ',' callout_arg (',' callout_arg)*)?
+	);
+method_call_params:
+	IDENTIFIER (',' ' '* IDENTIFIER)*;
+DATA_TYPE: INT | BOOLEAN;
+method_name: IDENTIFIER;
+location: IDENTIFIER | IDENTIFIER '[' expr ']';
+expr:
+	location
+	| method_call
+	| literal
+	| expr ' '* bin_op ' '* expr
+	| '-' expr
+	| '!' expr
+	| '(' expr ')';
+callout_arg: expr | STRINGLITERAL;
+
+bin_op: arith_op | rel_op | eq_op | cond_op;
+arith_op: '+' | '-' | '*' | '/' | '%';
+rel_op: '<' | '>' | '<=' | '>=';
+eq_op: '==' | '!=';
+cond_op: '&&' | '||';
+
+SPACE: ' ';
+TAB: '\t';
+
+CLASS: 'class';
+PROGRAM: 'Program';
+VOID: 'void';
+TRUE: 'true';
+FALSE: 'false';
+IF: 'if';
+ELSE: 'else';
+FOR: 'for';
+BREAK: 'break';
+CONTINUE: 'continue';
+RETURN: 'return';
+CALLOUT: 'callout';
+INT: 'int';
+BOOLEAN: 'boolean';
+
+literal: INTLITERAL | CHARLITERAL | BOOLEANLITERAL;
+BOOLEANLITERAL: TRUE | FALSE;
+IDENTIFIER: ALPHA (ALPHA | DIGIT)*;
+INTLITERAL: DECIMALLITERAL | HEXLITERAL;
+DECIMALLITERAL: DIGIT DIGIT*;
+HEXLITERAL: '0x' HEX_DIGIT+;
 CHAR: ~['\\\r\n] | '\\' ['"?abfnrtv\\];
-CHARLITERAL : '\'' CHAR '\''  ;
-STRINGLITERAL : '"' CHAR* '"' ;
+CHARLITERAL: '\'' CHAR '\'';
+STRINGLITERAL: '"' CHAR* '"';
 
-DIGIT : [0-9] ;
-ALPHA : [a-zA-Z_];
-HEX_DIGIT : [0-9a-fA-F] ;
+DIGIT: [0-9];
+ALPHA: [a-zA-Z_];
+HEX_DIGIT: [0-9a-fA-F];
 
-White : [ \t]+ -> skip ;
-Newline : ( '\r' '\n'? | '\n' ) -> skip ;
-LineComment : '//' ~[\r\n]* -> skip ;
-BlockComment : '/*' .*? '*/' -> skip ;
+White: [ \t]+ -> skip;
+Newline: ( '\r' '\n'? | '\n') -> skip;
+LineComment: '//' ~[\r\n]* -> skip;
+BlockComment: '/*' .*? '*/' -> skip;

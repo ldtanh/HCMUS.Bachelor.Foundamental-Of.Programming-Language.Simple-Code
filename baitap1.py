@@ -88,13 +88,13 @@ class MyErrorListener( ErrorListener ):
             self.printSyntaxError(msg, line, column)
 
     def reportAmbiguity(self, recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs):
-        fWrite.write('Grammar Ambiguity: {0}\n'.format(str(configs)))
+        pass
 
     def reportAttemptingFullContext(self, recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs):
-        fWrite.write('Context Error: {0}\n'.format(str(configs)))
-
+        pass
+        
     def reportContextSensitivity(self, recognizer, dfa, startIndex, stopIndex, prediction, configs):
-        fWrite.write('Context Sensitivity: {0}\n'.format(str(configs)))
+        pass
 
 def main(argv):
     input_stream = FileStream(argv[2])

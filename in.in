@@ -1,7 +1,21 @@
 class Program {
   void main() {
     int b;
-    b = 2 + 7 = 12;	// bad expression
+    b = 2 + 7; 
+    return 0;
+    if (a == b) {
+      c = c + a;
+    }
+    else {
+      c = c - a;
+    }
+    for i = 2, i <= 10 {
+      c = c + d;
+      break ;
+      continue ;
+    }
+    test(a, b, c);
+    callout testC_call___aout__new
   }
 }
 
