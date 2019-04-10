@@ -8,7 +8,7 @@ import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\62")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\63")
         buf.write("\u01a3\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
@@ -242,7 +242,7 @@ class SimpleCodeParser ( Parser ):
                       "BOOLEANLITERAL", "IDENTIFIER", "INTLITERAL", "DECIMALLITERAL", 
                       "HEXLITERAL", "CHAR", "CHARLITERAL", "STRINGLITERAL", 
                       "DIGIT", "ALPHA", "HEX_DIGIT", "White", "Newline", 
-                      "LineComment", "BlockComment" ]
+                      "LineComment", "BlockComment", "ERROR" ]
 
     RULE_program = 0
     RULE_field_decl = 1
@@ -317,6 +317,7 @@ class SimpleCodeParser ( Parser ):
     Newline=46
     LineComment=47
     BlockComment=48
+    ERROR=49
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)

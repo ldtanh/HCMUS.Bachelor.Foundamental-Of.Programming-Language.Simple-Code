@@ -82,3 +82,5 @@ White: [ \t]+ -> skip;
 Newline: ( '\r' '\n'? | '\n') -> skip;
 LineComment: '//' ~[\r\n]* -> skip;
 BlockComment: '/*' .*? '*/' -> skip;
+
+ERROR : . ;

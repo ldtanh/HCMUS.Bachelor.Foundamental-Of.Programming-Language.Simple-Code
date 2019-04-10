@@ -46,6 +46,7 @@ White=45
 Newline=46
 LineComment=47
 BlockComment=48
+ERROR=49
 '{'=1
 '}'=2
 ','=3

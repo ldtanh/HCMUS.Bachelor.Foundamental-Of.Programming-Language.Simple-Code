@@ -99,8 +99,9 @@ class MyErrorListener(ErrorListener):
 def main(argv):
     input_stream = FileStream(argv[2])
     lexer = SimpleCodeLexer(input_stream)
-    print(lexer, type(lexer))
     stream = CommonTokenStream(lexer)
+    for token in lexer.getAllTokens():
+        print(token.text)
     parser = SimpleCodeParser(stream)
     if (int(sys.argv[1]) == 1):
         parser._listeners = [MyErrorListener()]
