@@ -161,51 +161,6 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleCodeParser#bin_op.
-    def enterBin_op(self, ctx:SimpleCodeParser.Bin_opContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#bin_op.
-    def exitBin_op(self, ctx:SimpleCodeParser.Bin_opContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#arith_op.
-    def enterArith_op(self, ctx:SimpleCodeParser.Arith_opContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#arith_op.
-    def exitArith_op(self, ctx:SimpleCodeParser.Arith_opContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#rel_op.
-    def enterRel_op(self, ctx:SimpleCodeParser.Rel_opContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#rel_op.
-    def exitRel_op(self, ctx:SimpleCodeParser.Rel_opContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#eq_op.
-    def enterEq_op(self, ctx:SimpleCodeParser.Eq_opContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#eq_op.
-    def exitEq_op(self, ctx:SimpleCodeParser.Eq_opContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#cond_op.
-    def enterCond_op(self, ctx:SimpleCodeParser.Cond_opContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#cond_op.
-    def exitCond_op(self, ctx:SimpleCodeParser.Cond_opContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleCodeParser#literal.
     def enterLiteral(self, ctx:SimpleCodeParser.LiteralContext):
         pass
