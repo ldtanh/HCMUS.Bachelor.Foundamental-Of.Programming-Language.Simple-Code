@@ -2,6 +2,7 @@ from antlr4 import *
 from SimpleCodeLexer import SimpleCodeLexer
 from SimpleCodeListener import SimpleCodeListener
 from SimpleCodeParser import SimpleCodeParser
+from SimpleCodeVisitor import SimpleCodeVisitor
 import sys
 from antlr4.tree.Tree import TerminalNodeImpl, ErrorNodeImpl
 from antlr4.error.ErrorListener import ErrorListener
@@ -95,7 +96,6 @@ class MyErrorListener(ErrorListener):
         else:
             self.printSyntaxError(msg, line, column)
 
-
 def main(argv):
     input_stream = FileStream(argv[2])
     lexer = SimpleCodeLexer(input_stream)
@@ -104,12 +104,9 @@ def main(argv):
     if (int(sys.argv[1]) == 1):
         parser._listeners = [MyErrorListener()]
     tree = parser.program()
-    flattenTree(tree, lexer)
-
-    # printer = SimpleCodePrintListener(lexer)
-    # walker = ParseTreeWalker()
-    # walker.walk(printer, tree)
-
+    visitor = SimpleCodeVisitor(lexer)
+    visitor.visit(tree)
+    # flattenTree(tree, lexer)
 
 if __name__ == '__main__':
     main(sys.argv)

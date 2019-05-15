@@ -1,7 +1,7 @@
-'a'
-true
-false
-0
-1
-123
-"123"
+class Program {
+  boolean b, c, a[10];
+
+  void main() {
+    b += true;
+  }								
+}

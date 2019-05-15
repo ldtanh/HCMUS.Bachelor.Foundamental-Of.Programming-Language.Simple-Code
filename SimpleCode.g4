@@ -3,11 +3,11 @@ grammar SimpleCode;
 program:
 	CLASS SPACE+ PROGRAM SPACE+ '{' SPACE* field_decl* method_decl* SPACE* '}';
 field_decl: DATA_TYPE SPACE+ variable (',' variable)*? ';' SPACE*;
+variable: array_decl | IDENTIFIER ;
+array_decl: IDENTIFIER '[' INTLITERAL ']' ;
 method_decl:
 	method_decl_type SPACE+ IDENTIFIER '(' method_params? ')' SPACE* block;
 method_decl_type: VOID | DATA_TYPE;
-variable: array_decl | IDENTIFIER ;
-array_decl: IDENTIFIER '[' INTLITERAL ']' ;
 method_params:
 	DATA_TYPE SPACE+ IDENTIFIER (',' DATA_TYPE ' ' IDENTIFIER)*;
 block: '{' (var_decl | statement)* '}';
