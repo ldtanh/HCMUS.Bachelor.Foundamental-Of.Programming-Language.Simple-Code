@@ -1,6 +1,6 @@
 class Program {
   boolean b, c, a[10];
-
+  int a, b;
   void main() {
     b += true;
   }								

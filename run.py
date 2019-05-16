@@ -10,8 +10,8 @@ from antlr4.error.Errors import RecognitionException, NoViableAltException, Inpu
 
 filterList = ['IDENTIFIER', 'INTLITERAL',
               'CHARLITERAL', 'STRINGLITERAL', 'BOOLEANLITERAL']
-fWrite = open(sys.argv[2] + '.out', 'w')
 
+fWrite = open(sys.argv[1] + '.out', 'w')
 
 def printOutChildNode(child, lexers):
     global filterList, fWrite
@@ -41,8 +41,9 @@ class MyErrorListener(ErrorListener):
         super(MyErrorListener, self).__init__()
 
     def printSyntaxError(self, msg, line, column):
-        fWrite.write(
-            '[Syntax Error] Line {0}, column {1}: {2}\n'.format(line, column, msg))
+        if not msg.find("' '"):
+            fWrite.write(
+                '[Syntax Error] Line {0}, column {1}: {2}\n'.format(line, column, msg))
 
     def escapeWSAndQuote(self, s: str):
         s = s.replace("\n", "\\n")
@@ -97,16 +98,15 @@ class MyErrorListener(ErrorListener):
             self.printSyntaxError(msg, line, column)
 
 def main(argv):
-    input_stream = FileStream(argv[2])
+    input_stream = FileStream(argv[1])
     lexer = SimpleCodeLexer(input_stream)
     stream = CommonTokenStream(lexer)
     parser = SimpleCodeParser(stream)
-    if (int(sys.argv[1]) == 1):
-        parser._listeners = [MyErrorListener()]
+    parser._listeners = [MyErrorListener()]
     tree = parser.program()
-    visitor = SimpleCodeVisitor(lexer)
+    visitor = SimpleCodeVisitor(lexer, fWrite)
     visitor.visit(tree)
     # flattenTree(tree, lexer)
-
+    print(visitor.table)
 if __name__ == '__main__':
     main(sys.argv)
