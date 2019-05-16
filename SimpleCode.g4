@@ -10,10 +10,9 @@ method_decl:
 method_decl_type: VOID | DATA_TYPE;
 method_params:
 	DATA_TYPE SPACE+ IDENTIFIER (',' DATA_TYPE ' ' IDENTIFIER)*;
-block: '{' (var_decl | statement)* '}';
-var_decl: DATA_TYPE SPACE+ variable (',' variable)* ';';
+block: '{' (field_decl | statement)* '}';
 statement:
-	location SPACE* assign_op SPACE* expr ';'
+	assign_statement
 	| method_call
 	| IF SPACE* '(' expr ')' SPACE* block (ELSE SPACE* block)?
 	| FOR SPACE* IDENTIFIER SPACE* '=' SPACE* expr SPACE* ',' SPACE* expr SPACE* block
@@ -21,6 +20,7 @@ statement:
 	| BREAK SPACE* ';'
 	| CONTINUE SPACE* ';'
 	| block;
+assign_statement: location SPACE* assign_op SPACE* expr ';';
 assign_op : '=' | '+=' | '-=';
 method_call:
 	method_name '(' method_call_params? ')' ';'

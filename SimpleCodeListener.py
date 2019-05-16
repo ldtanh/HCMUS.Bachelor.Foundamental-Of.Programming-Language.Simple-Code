@@ -26,24 +26,6 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleCodeParser#method_decl.
-    def enterMethod_decl(self, ctx:SimpleCodeParser.Method_declContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#method_decl.
-    def exitMethod_decl(self, ctx:SimpleCodeParser.Method_declContext):
-        pass
-
-
-    # Enter a parse tree produced by SimpleCodeParser#method_decl_type.
-    def enterMethod_decl_type(self, ctx:SimpleCodeParser.Method_decl_typeContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#method_decl_type.
-    def exitMethod_decl_type(self, ctx:SimpleCodeParser.Method_decl_typeContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleCodeParser#variable.
     def enterVariable(self, ctx:SimpleCodeParser.VariableContext):
         pass
@@ -59,6 +41,24 @@ class SimpleCodeListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleCodeParser#array_decl.
     def exitArray_decl(self, ctx:SimpleCodeParser.Array_declContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleCodeParser#method_decl.
+    def enterMethod_decl(self, ctx:SimpleCodeParser.Method_declContext):
+        pass
+
+    # Exit a parse tree produced by SimpleCodeParser#method_decl.
+    def exitMethod_decl(self, ctx:SimpleCodeParser.Method_declContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleCodeParser#method_decl_type.
+    def enterMethod_decl_type(self, ctx:SimpleCodeParser.Method_decl_typeContext):
+        pass
+
+    # Exit a parse tree produced by SimpleCodeParser#method_decl_type.
+    def exitMethod_decl_type(self, ctx:SimpleCodeParser.Method_decl_typeContext):
         pass
 
 
@@ -80,21 +80,21 @@ class SimpleCodeListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by SimpleCodeParser#var_decl.
-    def enterVar_decl(self, ctx:SimpleCodeParser.Var_declContext):
-        pass
-
-    # Exit a parse tree produced by SimpleCodeParser#var_decl.
-    def exitVar_decl(self, ctx:SimpleCodeParser.Var_declContext):
-        pass
-
-
     # Enter a parse tree produced by SimpleCodeParser#statement.
     def enterStatement(self, ctx:SimpleCodeParser.StatementContext):
         pass
 
     # Exit a parse tree produced by SimpleCodeParser#statement.
     def exitStatement(self, ctx:SimpleCodeParser.StatementContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleCodeParser#assign_statement.
+    def enterAssign_statement(self, ctx:SimpleCodeParser.Assign_statementContext):
+        pass
+
+    # Exit a parse tree produced by SimpleCodeParser#assign_statement.
+    def exitAssign_statement(self, ctx:SimpleCodeParser.Assign_statementContext):
         pass
 
 

@@ -1,2 +1,1 @@
-Variable a is already declared with type: boolean
-Variable b is already declared with type: boolean
+Error at line 5, column 4 : Variable [a] is already declared with type [int]

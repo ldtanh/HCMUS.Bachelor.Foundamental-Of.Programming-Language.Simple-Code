@@ -97,6 +97,103 @@ class MyErrorListener(ErrorListener):
         else:
             self.printSyntaxError(msg, line, column)
 
+
+ERROR_DUPLICATE_VAR_DEFINE = 'Variable [{0}] is already declared with type [{1}]\n'
+ERROR_VAR_NOT_DEFINED = 'Variable [{0}] has not been defined\n'
+ERROR_DATA_TYPE_NOT_COMPATIBLE_OPERATOR = 'Type [{0}] is not compatible with operator [{1}]\n'
+ERROR_DATA_TYPE_DIFFERENT = "Type [{0}] and type [{1}] are different to operate\n"
+INT_TYPE = 'int'
+BOOL_TYPE = 'boolean'
+
+def checkTypeCompatible(op, dataType):
+    if op.strip() in ['+=', '-=', '+', '-', '*', '/', '%', '<','>', '<=', '>=']:
+        return dataType == INT_TYPE
+    return dataType == BOOL_TYPE
+
+class MyVisitor(SimpleCodeVisitor):
+    def __init__(self, lexer, fWrite):
+        self.table = {}
+        self.lexer = lexer
+        self.fWrite = fWrite
+
+    def printError(self, ctx, errorMsg, *args):
+        self.fWrite.write('Error at line {0}, column {1} : {2}'.format(ctx.start.line, ctx.start.column, errorMsg.format(*args)))
+
+    def visitProgram(self, ctx:SimpleCodeParser.ProgramContext):
+        return self.visitChildren(ctx)
+
+
+    def visitField_decl(self, ctx:SimpleCodeParser.Field_declContext):
+        dataType = ctx.DATA_TYPE().getText()
+        for i in range(ctx.getChildCount()):
+            child = ctx.getChild(i)
+            if (not isinstance(child, TerminalNodeImpl)) and (child.getText().strip() != ''):
+                id = self.visit(child).getText()
+                if id in self.table:
+                    if self.table[id] != dataType:
+                        self.printError(ctx, ERROR_DUPLICATE_VAR_DEFINE, id, self.table[id])
+                else:
+                    self.table[id] = dataType
+
+
+    def visitMethod_decl(self, ctx:SimpleCodeParser.Method_declContext):
+        declarationType = ctx.method_decl_type().getText()
+        methodName = ctx.IDENTIFIER().getText()
+        if id in self.table:
+            if self.table[methodName] != declarationType:
+                self.printError(ctx, ERROR_DUPLICATE_VAR_DEFINE, methodName, self.table[methodName])
+        else:
+            self.table[methodName] = declarationType
+        self.visit(ctx.block())
+
+    def visitVariable(self, ctx:SimpleCodeParser.VariableContext):
+        if ctx.IDENTIFIER() is not None:
+            return ctx.IDENTIFIER()
+        return self.visitChildren(ctx)
+    
+    def visitArray_decl(self, ctx:SimpleCodeParser.Array_declContext):
+        return ctx.IDENTIFIER()
+
+    def visitAssign_statement(self, ctx:SimpleCodeParser.Assign_statementContext):
+        # print(ctx.expr().getToken())
+        # print(dir(ctx.expr()))
+        lhs = ctx.location().getText()
+        op = ctx.assign_op().getText()
+        rhs = self.visit(ctx.expr())
+    
+        if self.table[lhs] is None:
+            self.printError(ctx, ERROR_VAR_NOT_DEFINED, lhs)
+            return
+        
+        if not checkTypeCompatible(op, self.table[lhs]):
+            self.printError(ctx, ERROR_DATA_TYPE_NOT_COMPATIBLE_OPERATOR, self.table[lhs], op)
+            return
+
+        if (rhs in [INT_TYPE, BOOL_TYPE]) and (not checkTypeCompatible(op, rhs)):
+            self.printError(ctx, ERROR_DATA_TYPE_NOT_COMPATIBLE_OPERATOR, rhs, op)
+            return
+
+        lhsType = self.table[lhs]
+        rhsType = self.table[rhs]
+
+        if rhsType is None:
+            self.printError(ctx, ERROR_VAR_NOT_DEFINED, rhs)
+            return
+        
+        if lhsType != rhsType:
+            self.printError(ctx, ERROR_DATA_TYPE_DIFFERENT, lhsType, rhsType)
+        
+    def visitLiteral(self, ctx:SimpleCodeParser.LiteralContext):
+        if (ctx.INTLITERAL()):
+            return INT_TYPE
+        if (ctx.BOOLEANLITERAL()):
+            return BOOL_TYPE
+        print(ctx)
+        return self.visitChildren(ctx)
+
+    def visitLocation(self, ctx:SimpleCodeParser.LocationContext):
+        return ctx.IDENTIFIER().getText()
+
 def main(argv):
     input_stream = FileStream(argv[1])
     lexer = SimpleCodeLexer(input_stream)
@@ -104,9 +201,9 @@ def main(argv):
     parser = SimpleCodeParser(stream)
     parser._listeners = [MyErrorListener()]
     tree = parser.program()
-    visitor = SimpleCodeVisitor(lexer, fWrite)
+    visitor = MyVisitor(lexer, fWrite)
     visitor.visit(tree)
     # flattenTree(tree, lexer)
-    print(visitor.table)
+    # print(visitor.table)
 if __name__ == '__main__':
     main(sys.argv)
