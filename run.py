@@ -100,24 +100,34 @@ class MyErrorListener(ErrorListener):
 
 ERROR_DUPLICATE_VAR_DEFINE = 'Variable [{0}] is already declared with type [{1}]\n'
 ERROR_VAR_NOT_DEFINED = 'Variable [{0}] has not been defined\n'
+ERROR_VAR_EXCUTE_AS_FUNCTION = 'Variable [{0}] is not a function\n'
 ERROR_DATA_TYPE_NOT_COMPATIBLE_OPERATOR = 'Type [{0}] is not compatible with operator [{1}]\n'
 ERROR_DATA_TYPE_DIFFERENT = "Type [{0}] and type [{1}] are different to operate\n"
+MAIN_METHOD_IS_NOT_AVAILABLE = "There is no 'main' method is declared\n"
+ERROR_ARRAY_ZERO_LENGTH = "Array [{0}] is declared with zero-size\n"
+ERROR_ARRAY_LENGTH_NOT_DEFINED = "Array [{0}] is declared with wrong size\n"
+FUNCTION_NOT_DEFINED = "Function [{0}] is not defined!\n"
+FUNCTION_PARAMS_MISMATCHED = "Function [{0}] requires list parameters as {1}, which is actually as {2}\n"
 INT_TYPE = 'int'
 BOOL_TYPE = 'boolean'
 
 def checkTypeCompatible(op, dataType):
-    if op.strip() in ['+=', '-=', '+', '-', '*', '/', '%', '<','>', '<=', '>=']:
+    if op.strip() in ['+=', '-=', '+', '-', '*', '/', '%', '<','>', '<=', '>=', '=']:
         return dataType == INT_TYPE
     return dataType == BOOL_TYPE
 
 class MyVisitor(SimpleCodeVisitor):
     def __init__(self, lexer, fWrite):
         self.table = {}
+        self.funcTable = {}
         self.lexer = lexer
         self.fWrite = fWrite
 
     def printError(self, ctx, errorMsg, *args):
-        self.fWrite.write('Error at line {0}, column {1} : {2}'.format(ctx.start.line, ctx.start.column, errorMsg.format(*args)))
+        if ctx is not None:
+            self.fWrite.write('Error at line {0}, column {1} : {2}'.format(ctx.start.line, ctx.start.column, errorMsg.format(*args)))
+        else:
+            self.fWrite.write('Error at line 0, column 0 : {0}'.format(errorMsg.format(*args)))
 
     def visitProgram(self, ctx:SimpleCodeParser.ProgramContext):
         return self.visitChildren(ctx)
@@ -139,12 +149,23 @@ class MyVisitor(SimpleCodeVisitor):
     def visitMethod_decl(self, ctx:SimpleCodeParser.Method_declContext):
         declarationType = ctx.method_decl_type().getText()
         methodName = ctx.IDENTIFIER().getText()
-        if id in self.table:
+        if (ctx.method_params()):
+            self.funcTable[methodName] = self.visit(ctx.method_params())
+        else:
+            self.funcTable[methodName] = []
+
+        if methodName in self.table:
             if self.table[methodName] != declarationType:
                 self.printError(ctx, ERROR_DUPLICATE_VAR_DEFINE, methodName, self.table[methodName])
         else:
             self.table[methodName] = declarationType
         self.visit(ctx.block())
+        
+
+    def visitMethod_params(self, ctx:SimpleCodeParser.Method_paramsContext):
+        listParams = [id.getText() for id in ctx.DATA_TYPE()]
+        # print(ctx.DATA_TYPE())
+        return listParams
 
     def visitVariable(self, ctx:SimpleCodeParser.VariableContext):
         if ctx.IDENTIFIER() is not None:
@@ -152,6 +173,11 @@ class MyVisitor(SimpleCodeVisitor):
         return self.visitChildren(ctx)
     
     def visitArray_decl(self, ctx:SimpleCodeParser.Array_declContext):
+        # if ctx.INTLITERAL() == '':
+        if isinstance(ctx.INTLITERAL(), ErrorNodeImpl):
+            self.printError(ctx, ERROR_ARRAY_LENGTH_NOT_DEFINED, ctx.IDENTIFIER().getText())
+        if ctx.INTLITERAL().getText() == '0':
+            self.printError(ctx, ERROR_ARRAY_ZERO_LENGTH, ctx.IDENTIFIER().getText())
         return ctx.IDENTIFIER()
 
     def visitAssign_statement(self, ctx:SimpleCodeParser.Assign_statementContext):
@@ -160,8 +186,8 @@ class MyVisitor(SimpleCodeVisitor):
         lhs = ctx.location().getText()
         op = ctx.assign_op().getText()
         rhs = self.visit(ctx.expr())
-    
-        if self.table[lhs] is None:
+        
+        if not self.table.get(lhs):
             self.printError(ctx, ERROR_VAR_NOT_DEFINED, lhs)
             return
         
@@ -173,10 +199,13 @@ class MyVisitor(SimpleCodeVisitor):
             self.printError(ctx, ERROR_DATA_TYPE_NOT_COMPATIBLE_OPERATOR, rhs, op)
             return
 
-        lhsType = self.table[lhs]
-        rhsType = self.table[rhs]
+        lhsType = self.table.get(lhs)
+        rhsType = rhs
 
-        if rhsType is None:
+        if rhsType not in [INT_TYPE, BOOL_TYPE]:
+            rhsType = self.table.get(rhs)
+
+        if not rhsType:
             self.printError(ctx, ERROR_VAR_NOT_DEFINED, rhs)
             return
         
@@ -188,11 +217,57 @@ class MyVisitor(SimpleCodeVisitor):
             return INT_TYPE
         if (ctx.BOOLEANLITERAL()):
             return BOOL_TYPE
-        print(ctx)
         return self.visitChildren(ctx)
 
     def visitLocation(self, ctx:SimpleCodeParser.LocationContext):
         return ctx.IDENTIFIER().getText()
+
+    def visitMethod_call(self, ctx:SimpleCodeParser.Method_callContext):
+        if ctx.CALLOUT() is None:
+            funcName = ctx.method_name().getText()
+            if not self.table.get(funcName):
+                self.printError(ctx, FUNCTION_NOT_DEFINED, funcName)
+                return None
+            if not self.funcTable.get(funcName):
+                self.printError(ctx, ERROR_VAR_EXCUTE_AS_FUNCTION, funcName)
+                return None
+
+            listParams = []
+            if ctx.method_call_params():
+                listParams = self.visit(ctx.method_call_params())
+            
+            if listParams is not None:
+                requiredParams = self.funcTable[funcName]
+                if requiredParams != listParams:            
+                    self.printError(ctx, FUNCTION_PARAMS_MISMATCHED, funcName, requiredParams, listParams)
+
+            return self.table.get(funcName)
+
+    def visitExpr(self, ctx:SimpleCodeParser.ExprContext):
+        if (ctx.location()):
+            return self.visit(ctx.location())
+        if (ctx.literal()):
+            return self.visit(ctx.literal())
+        if (ctx.method_call()):
+            return self.visit(ctx.method_call())
+
+        return self.visitChildren(ctx)
+
+    def visitMethod_call_params(self, ctx:SimpleCodeParser.Method_call_paramsContext):
+        listParams = []
+        for _ in ctx.expr():
+            id = self.visitExpr(_)
+
+            if id in [INT_TYPE, BOOL_TYPE]:
+                listParams.append(id)
+                continue
+
+            if not self.table.get(id):
+                self.printError(ctx, ERROR_VAR_NOT_DEFINED, id)
+                return None
+            listParams.append(self.table[id])
+            
+        return listParams
 
 def main(argv):
     input_stream = FileStream(argv[1])
@@ -203,7 +278,11 @@ def main(argv):
     tree = parser.program()
     visitor = MyVisitor(lexer, fWrite)
     visitor.visit(tree)
+    # Check for main method
+    if not visitor.table.get('main'):
+        visitor.printError(None, MAIN_METHOD_IS_NOT_AVAILABLE)
     # flattenTree(tree, lexer)
-    # print(visitor.table)
+    print(visitor.table)
+    print(visitor.funcTable)
 if __name__ == '__main__':
     main(sys.argv)

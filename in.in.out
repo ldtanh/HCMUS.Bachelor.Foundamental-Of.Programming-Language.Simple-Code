@@ -1,1 +1,1 @@
-Error at line 5, column 4 : Variable [a] is already declared with type [int]
+Error at line 7, column 4 : Function [main] requires list parameters as ['int', 'int', 'int'], which is actually as ['int', 'int', 'boolean']

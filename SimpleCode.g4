@@ -23,12 +23,12 @@ statement:
 assign_statement: location SPACE* assign_op SPACE* expr ';';
 assign_op : '=' | '+=' | '-=';
 method_call:
-	method_name '(' method_call_params? ')' ';'
+	method_name '(' method_call_params? ')'
 	| CALLOUT SPACE* '(' SPACE* (
 		STRINGLITERAL SPACE* (',' SPACE* callout_arg (',' callout_arg)*)? ')' SPACE* ';' SPACE*
 	);
 method_call_params:
-	IDENTIFIER (',' SPACE* IDENTIFIER)*;
+	expr (',' SPACE* expr)*;
 DATA_TYPE: INT | BOOLEAN;
 method_name: IDENTIFIER;
 location: IDENTIFIER | (IDENTIFIER '[' expr ']');

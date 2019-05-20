@@ -9,7 +9,7 @@ import sys
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\63")
-        buf.write("\u0194\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u0193\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\3\2\3\2\6\2)\n\2\r\2\16\2*\3\2\3\2\6\2/\n\2\r\2\16\2")
@@ -36,27 +36,27 @@ def serializedATN():
         buf.write("\13\n\3\n\3\n\5\n\u0101\n\n\3\13\3\13\7\13\u0105\n\13")
         buf.write("\f\13\16\13\u0108\13\13\3\13\3\13\7\13\u010c\n\13\f\13")
         buf.write("\16\13\u010f\13\13\3\13\3\13\3\13\3\f\3\f\3\r\3\r\3\r")
-        buf.write("\5\r\u0119\n\r\3\r\3\r\3\r\3\r\3\r\7\r\u0120\n\r\f\r\16")
-        buf.write("\r\u0123\13\r\3\r\3\r\7\r\u0127\n\r\f\r\16\r\u012a\13")
-        buf.write("\r\3\r\3\r\7\r\u012e\n\r\f\r\16\r\u0131\13\r\3\r\3\r\7")
-        buf.write("\r\u0135\n\r\f\r\16\r\u0138\13\r\3\r\3\r\3\r\7\r\u013d")
-        buf.write("\n\r\f\r\16\r\u0140\13\r\5\r\u0142\n\r\3\r\3\r\7\r\u0146")
-        buf.write("\n\r\f\r\16\r\u0149\13\r\3\r\3\r\7\r\u014d\n\r\f\r\16")
-        buf.write("\r\u0150\13\r\5\r\u0152\n\r\3\16\3\16\3\16\7\16\u0157")
-        buf.write("\n\16\f\16\16\16\u015a\13\16\3\16\7\16\u015d\n\16\f\16")
-        buf.write("\16\16\u0160\13\16\3\17\3\17\3\20\3\20\3\20\3\20\3\20")
-        buf.write("\3\20\5\20\u016a\n\20\3\21\3\21\3\21\3\21\3\21\3\21\3")
-        buf.write("\21\3\21\3\21\3\21\3\21\3\21\5\21\u0178\n\21\3\21\3\21")
-        buf.write("\7\21\u017c\n\21\f\21\16\21\u017f\13\21\3\21\3\21\7\21")
-        buf.write("\u0183\n\21\f\21\16\21\u0186\13\21\3\21\7\21\u0189\n\21")
-        buf.write("\f\21\16\21\u018c\13\21\3\22\3\22\5\22\u0190\n\22\3\23")
+        buf.write("\5\r\u0119\n\r\3\r\3\r\3\r\3\r\7\r\u011f\n\r\f\r\16\r")
+        buf.write("\u0122\13\r\3\r\3\r\7\r\u0126\n\r\f\r\16\r\u0129\13\r")
+        buf.write("\3\r\3\r\7\r\u012d\n\r\f\r\16\r\u0130\13\r\3\r\3\r\7\r")
+        buf.write("\u0134\n\r\f\r\16\r\u0137\13\r\3\r\3\r\3\r\7\r\u013c\n")
+        buf.write("\r\f\r\16\r\u013f\13\r\5\r\u0141\n\r\3\r\3\r\7\r\u0145")
+        buf.write("\n\r\f\r\16\r\u0148\13\r\3\r\3\r\7\r\u014c\n\r\f\r\16")
+        buf.write("\r\u014f\13\r\5\r\u0151\n\r\3\16\3\16\3\16\7\16\u0156")
+        buf.write("\n\16\f\16\16\16\u0159\13\16\3\16\7\16\u015c\n\16\f\16")
+        buf.write("\16\16\u015f\13\16\3\17\3\17\3\20\3\20\3\20\3\20\3\20")
+        buf.write("\3\20\5\20\u0169\n\20\3\21\3\21\3\21\3\21\3\21\3\21\3")
+        buf.write("\21\3\21\3\21\3\21\3\21\3\21\5\21\u0177\n\21\3\21\3\21")
+        buf.write("\7\21\u017b\n\21\f\21\16\21\u017e\13\21\3\21\3\21\7\21")
+        buf.write("\u0182\n\21\f\21\16\21\u0185\13\21\3\21\7\21\u0188\n\21")
+        buf.write("\f\21\16\21\u018b\13\21\3\22\3\22\5\22\u018f\n\22\3\23")
         buf.write("\3\23\3\23\3X\3 \24\2\4\6\b\n\f\16\20\22\24\26\30\32\34")
-        buf.write("\36 \"$\2\5\4\2\20\20\32\32\3\2\13\r\5\2$$&&*+\2\u01bf")
+        buf.write("\36 \"$\2\5\4\2\20\20\32\32\3\2\13\r\5\2$$&&*+\2\u01be")
         buf.write("\2&\3\2\2\2\4M\3\2\2\2\6d\3\2\2\2\bf\3\2\2\2\nk\3\2\2")
         buf.write("\2\f\177\3\2\2\2\16\u0081\3\2\2\2\20\u0091\3\2\2\2\22")
-        buf.write("\u0100\3\2\2\2\24\u0102\3\2\2\2\26\u0113\3\2\2\2\30\u0151")
-        buf.write("\3\2\2\2\32\u0153\3\2\2\2\34\u0161\3\2\2\2\36\u0169\3")
-        buf.write("\2\2\2 \u0177\3\2\2\2\"\u018f\3\2\2\2$\u0191\3\2\2\2&")
+        buf.write("\u0100\3\2\2\2\24\u0102\3\2\2\2\26\u0113\3\2\2\2\30\u0150")
+        buf.write("\3\2\2\2\32\u0152\3\2\2\2\34\u0160\3\2\2\2\36\u0168\3")
+        buf.write("\2\2\2 \u0176\3\2\2\2\"\u018e\3\2\2\2$\u0190\3\2\2\2&")
         buf.write("(\7\30\2\2\')\7\26\2\2(\'\3\2\2\2)*\3\2\2\2*(\3\2\2\2")
         buf.write("*+\3\2\2\2+,\3\2\2\2,.\7\31\2\2-/\7\26\2\2.-\3\2\2\2/")
         buf.write("\60\3\2\2\2\60.\3\2\2\2\60\61\3\2\2\2\61\62\3\2\2\2\62")
@@ -145,63 +145,63 @@ def serializedATN():
         buf.write("\u0114\t\3\2\2\u0114\27\3\2\2\2\u0115\u0116\5\34\17\2")
         buf.write("\u0116\u0118\7\t\2\2\u0117\u0119\5\32\16\2\u0118\u0117")
         buf.write("\3\2\2\2\u0118\u0119\3\2\2\2\u0119\u011a\3\2\2\2\u011a")
-        buf.write("\u011b\7\n\2\2\u011b\u011c\7\6\2\2\u011c\u0152\3\2\2\2")
-        buf.write("\u011d\u0121\7!\2\2\u011e\u0120\7\26\2\2\u011f\u011e\3")
-        buf.write("\2\2\2\u0120\u0123\3\2\2\2\u0121\u011f\3\2\2\2\u0121\u0122")
-        buf.write("\3\2\2\2\u0122\u0124\3\2\2\2\u0123\u0121\3\2\2\2\u0124")
-        buf.write("\u0128\7\t\2\2\u0125\u0127\7\26\2\2\u0126\u0125\3\2\2")
-        buf.write("\2\u0127\u012a\3\2\2\2\u0128\u0126\3\2\2\2\u0128\u0129")
-        buf.write("\3\2\2\2\u0129\u012b\3\2\2\2\u012a\u0128\3\2\2\2\u012b")
-        buf.write("\u012f\7+\2\2\u012c\u012e\7\26\2\2\u012d\u012c\3\2\2\2")
-        buf.write("\u012e\u0131\3\2\2\2\u012f\u012d\3\2\2\2\u012f\u0130\3")
-        buf.write("\2\2\2\u0130\u0141\3\2\2\2\u0131\u012f\3\2\2\2\u0132\u0136")
-        buf.write("\7\5\2\2\u0133\u0135\7\26\2\2\u0134\u0133\3\2\2\2\u0135")
-        buf.write("\u0138\3\2\2\2\u0136\u0134\3\2\2\2\u0136\u0137\3\2\2\2")
-        buf.write("\u0137\u0139\3\2\2\2\u0138\u0136\3\2\2\2\u0139\u013e\5")
-        buf.write("\"\22\2\u013a\u013b\7\5\2\2\u013b\u013d\5\"\22\2\u013c")
-        buf.write("\u013a\3\2\2\2\u013d\u0140\3\2\2\2\u013e\u013c\3\2\2\2")
-        buf.write("\u013e\u013f\3\2\2\2\u013f\u0142\3\2\2\2\u0140\u013e\3")
-        buf.write("\2\2\2\u0141\u0132\3\2\2\2\u0141\u0142\3\2\2\2\u0142\u0143")
-        buf.write("\3\2\2\2\u0143\u0147\7\n\2\2\u0144\u0146\7\26\2\2\u0145")
-        buf.write("\u0144\3\2\2\2\u0146\u0149\3\2\2\2\u0147\u0145\3\2\2\2")
-        buf.write("\u0147\u0148\3\2\2\2\u0148\u014a\3\2\2\2\u0149\u0147\3")
-        buf.write("\2\2\2\u014a\u014e\7\6\2\2\u014b\u014d\7\26\2\2\u014c")
-        buf.write("\u014b\3\2\2\2\u014d\u0150\3\2\2\2\u014e\u014c\3\2\2\2")
-        buf.write("\u014e\u014f\3\2\2\2\u014f\u0152\3\2\2\2\u0150\u014e\3")
-        buf.write("\2\2\2\u0151\u0115\3\2\2\2\u0151\u011d\3\2\2\2\u0152\31")
-        buf.write("\3\2\2\2\u0153\u015e\7%\2\2\u0154\u0158\7\5\2\2\u0155")
-        buf.write("\u0157\7\26\2\2\u0156\u0155\3\2\2\2\u0157\u015a\3\2\2")
-        buf.write("\2\u0158\u0156\3\2\2\2\u0158\u0159\3\2\2\2\u0159\u015b")
-        buf.write("\3\2\2\2\u015a\u0158\3\2\2\2\u015b\u015d\7%\2\2\u015c")
-        buf.write("\u0154\3\2\2\2\u015d\u0160\3\2\2\2\u015e\u015c\3\2\2\2")
-        buf.write("\u015e\u015f\3\2\2\2\u015f\33\3\2\2\2\u0160\u015e\3\2")
-        buf.write("\2\2\u0161\u0162\7%\2\2\u0162\35\3\2\2\2\u0163\u016a\7")
-        buf.write("%\2\2\u0164\u0165\7%\2\2\u0165\u0166\7\7\2\2\u0166\u0167")
-        buf.write("\5 \21\2\u0167\u0168\7\b\2\2\u0168\u016a\3\2\2\2\u0169")
-        buf.write("\u0163\3\2\2\2\u0169\u0164\3\2\2\2\u016a\37\3\2\2\2\u016b")
-        buf.write("\u016c\b\21\1\2\u016c\u0178\5\36\20\2\u016d\u0178\5\30")
-        buf.write("\r\2\u016e\u0178\5$\23\2\u016f\u0170\7\16\2\2\u0170\u0178")
-        buf.write("\5 \21\5\u0171\u0172\7\17\2\2\u0172\u0178\5 \21\4\u0173")
-        buf.write("\u0174\7\t\2\2\u0174\u0175\5 \21\2\u0175\u0176\7\n\2\2")
-        buf.write("\u0176\u0178\3\2\2\2\u0177\u016b\3\2\2\2\u0177\u016d\3")
-        buf.write("\2\2\2\u0177\u016e\3\2\2\2\u0177\u016f\3\2\2\2\u0177\u0171")
-        buf.write("\3\2\2\2\u0177\u0173\3\2\2\2\u0178\u018a\3\2\2\2\u0179")
-        buf.write("\u017d\f\6\2\2\u017a\u017c\7\26\2\2\u017b\u017a\3\2\2")
-        buf.write("\2\u017c\u017f\3\2\2\2\u017d\u017b\3\2\2\2\u017d\u017e")
-        buf.write("\3\2\2\2\u017e\u0180\3\2\2\2\u017f\u017d\3\2\2\2\u0180")
-        buf.write("\u0184\7\21\2\2\u0181\u0183\7\26\2\2\u0182\u0181\3\2\2")
-        buf.write("\2\u0183\u0186\3\2\2\2\u0184\u0182\3\2\2\2\u0184\u0185")
-        buf.write("\3\2\2\2\u0185\u0187\3\2\2\2\u0186\u0184\3\2\2\2\u0187")
-        buf.write("\u0189\5 \21\7\u0188\u0179\3\2\2\2\u0189\u018c\3\2\2\2")
-        buf.write("\u018a\u0188\3\2\2\2\u018a\u018b\3\2\2\2\u018b!\3\2\2")
-        buf.write("\2\u018c\u018a\3\2\2\2\u018d\u0190\5 \21\2\u018e\u0190")
-        buf.write("\7+\2\2\u018f\u018d\3\2\2\2\u018f\u018e\3\2\2\2\u0190")
-        buf.write("#\3\2\2\2\u0191\u0192\t\4\2\2\u0192%\3\2\2\2\66*\60\66")
+        buf.write("\u011b\7\n\2\2\u011b\u0151\3\2\2\2\u011c\u0120\7!\2\2")
+        buf.write("\u011d\u011f\7\26\2\2\u011e\u011d\3\2\2\2\u011f\u0122")
+        buf.write("\3\2\2\2\u0120\u011e\3\2\2\2\u0120\u0121\3\2\2\2\u0121")
+        buf.write("\u0123\3\2\2\2\u0122\u0120\3\2\2\2\u0123\u0127\7\t\2\2")
+        buf.write("\u0124\u0126\7\26\2\2\u0125\u0124\3\2\2\2\u0126\u0129")
+        buf.write("\3\2\2\2\u0127\u0125\3\2\2\2\u0127\u0128\3\2\2\2\u0128")
+        buf.write("\u012a\3\2\2\2\u0129\u0127\3\2\2\2\u012a\u012e\7+\2\2")
+        buf.write("\u012b\u012d\7\26\2\2\u012c\u012b\3\2\2\2\u012d\u0130")
+        buf.write("\3\2\2\2\u012e\u012c\3\2\2\2\u012e\u012f\3\2\2\2\u012f")
+        buf.write("\u0140\3\2\2\2\u0130\u012e\3\2\2\2\u0131\u0135\7\5\2\2")
+        buf.write("\u0132\u0134\7\26\2\2\u0133\u0132\3\2\2\2\u0134\u0137")
+        buf.write("\3\2\2\2\u0135\u0133\3\2\2\2\u0135\u0136\3\2\2\2\u0136")
+        buf.write("\u0138\3\2\2\2\u0137\u0135\3\2\2\2\u0138\u013d\5\"\22")
+        buf.write("\2\u0139\u013a\7\5\2\2\u013a\u013c\5\"\22\2\u013b\u0139")
+        buf.write("\3\2\2\2\u013c\u013f\3\2\2\2\u013d\u013b\3\2\2\2\u013d")
+        buf.write("\u013e\3\2\2\2\u013e\u0141\3\2\2\2\u013f\u013d\3\2\2\2")
+        buf.write("\u0140\u0131\3\2\2\2\u0140\u0141\3\2\2\2\u0141\u0142\3")
+        buf.write("\2\2\2\u0142\u0146\7\n\2\2\u0143\u0145\7\26\2\2\u0144")
+        buf.write("\u0143\3\2\2\2\u0145\u0148\3\2\2\2\u0146\u0144\3\2\2\2")
+        buf.write("\u0146\u0147\3\2\2\2\u0147\u0149\3\2\2\2\u0148\u0146\3")
+        buf.write("\2\2\2\u0149\u014d\7\6\2\2\u014a\u014c\7\26\2\2\u014b")
+        buf.write("\u014a\3\2\2\2\u014c\u014f\3\2\2\2\u014d\u014b\3\2\2\2")
+        buf.write("\u014d\u014e\3\2\2\2\u014e\u0151\3\2\2\2\u014f\u014d\3")
+        buf.write("\2\2\2\u0150\u0115\3\2\2\2\u0150\u011c\3\2\2\2\u0151\31")
+        buf.write("\3\2\2\2\u0152\u015d\5 \21\2\u0153\u0157\7\5\2\2\u0154")
+        buf.write("\u0156\7\26\2\2\u0155\u0154\3\2\2\2\u0156\u0159\3\2\2")
+        buf.write("\2\u0157\u0155\3\2\2\2\u0157\u0158\3\2\2\2\u0158\u015a")
+        buf.write("\3\2\2\2\u0159\u0157\3\2\2\2\u015a\u015c\5 \21\2\u015b")
+        buf.write("\u0153\3\2\2\2\u015c\u015f\3\2\2\2\u015d\u015b\3\2\2\2")
+        buf.write("\u015d\u015e\3\2\2\2\u015e\33\3\2\2\2\u015f\u015d\3\2")
+        buf.write("\2\2\u0160\u0161\7%\2\2\u0161\35\3\2\2\2\u0162\u0169\7")
+        buf.write("%\2\2\u0163\u0164\7%\2\2\u0164\u0165\7\7\2\2\u0165\u0166")
+        buf.write("\5 \21\2\u0166\u0167\7\b\2\2\u0167\u0169\3\2\2\2\u0168")
+        buf.write("\u0162\3\2\2\2\u0168\u0163\3\2\2\2\u0169\37\3\2\2\2\u016a")
+        buf.write("\u016b\b\21\1\2\u016b\u0177\5\36\20\2\u016c\u0177\5\30")
+        buf.write("\r\2\u016d\u0177\5$\23\2\u016e\u016f\7\16\2\2\u016f\u0177")
+        buf.write("\5 \21\5\u0170\u0171\7\17\2\2\u0171\u0177\5 \21\4\u0172")
+        buf.write("\u0173\7\t\2\2\u0173\u0174\5 \21\2\u0174\u0175\7\n\2\2")
+        buf.write("\u0175\u0177\3\2\2\2\u0176\u016a\3\2\2\2\u0176\u016c\3")
+        buf.write("\2\2\2\u0176\u016d\3\2\2\2\u0176\u016e\3\2\2\2\u0176\u0170")
+        buf.write("\3\2\2\2\u0176\u0172\3\2\2\2\u0177\u0189\3\2\2\2\u0178")
+        buf.write("\u017c\f\6\2\2\u0179\u017b\7\26\2\2\u017a\u0179\3\2\2")
+        buf.write("\2\u017b\u017e\3\2\2\2\u017c\u017a\3\2\2\2\u017c\u017d")
+        buf.write("\3\2\2\2\u017d\u017f\3\2\2\2\u017e\u017c\3\2\2\2\u017f")
+        buf.write("\u0183\7\21\2\2\u0180\u0182\7\26\2\2\u0181\u0180\3\2\2")
+        buf.write("\2\u0182\u0185\3\2\2\2\u0183\u0181\3\2\2\2\u0183\u0184")
+        buf.write("\3\2\2\2\u0184\u0186\3\2\2\2\u0185\u0183\3\2\2\2\u0186")
+        buf.write("\u0188\5 \21\7\u0187\u0178\3\2\2\2\u0188\u018b\3\2\2\2")
+        buf.write("\u0189\u0187\3\2\2\2\u0189\u018a\3\2\2\2\u018a!\3\2\2")
+        buf.write("\2\u018b\u0189\3\2\2\2\u018c\u018f\5 \21\2\u018d\u018f")
+        buf.write("\7+\2\2\u018e\u018c\3\2\2\2\u018e\u018d\3\2\2\2\u018f")
+        buf.write("#\3\2\2\2\u0190\u0191\t\4\2\2\u0191%\3\2\2\2\66*\60\66")
         buf.write("<BHQX_dotz\u0085\u008e\u0094\u0096\u00a1\u00aa\u00b2\u00b6")
         buf.write("\u00bc\u00c3\u00ca\u00d1\u00d8\u00df\u00e8\u00ec\u00f3")
-        buf.write("\u00fb\u0100\u0106\u010d\u0118\u0121\u0128\u012f\u0136")
-        buf.write("\u013e\u0141\u0147\u014e\u0151\u0158\u015e\u0169\u0177")
-        buf.write("\u017d\u0184\u018a\u018f")
+        buf.write("\u00fb\u0100\u0106\u010d\u0118\u0120\u0127\u012e\u0135")
+        buf.write("\u013d\u0140\u0146\u014d\u0150\u0157\u015d\u0168\u0176")
+        buf.write("\u017c\u0183\u0189\u018e")
         return buf.getvalue()
 
 
@@ -1513,7 +1513,7 @@ class SimpleCodeParser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_method_call)
         self._la = 0 # Token type
         try:
-            self.state = 335
+            self.state = 334
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [SimpleCodeParser.IDENTIFIER]:
@@ -1525,108 +1525,106 @@ class SimpleCodeParser ( Parser ):
                 self.state = 278
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if _la==SimpleCodeParser.IDENTIFIER:
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SimpleCodeParser.T__6) | (1 << SimpleCodeParser.T__11) | (1 << SimpleCodeParser.T__12) | (1 << SimpleCodeParser.CALLOUT) | (1 << SimpleCodeParser.BOOLEANLITERAL) | (1 << SimpleCodeParser.IDENTIFIER) | (1 << SimpleCodeParser.INTLITERAL) | (1 << SimpleCodeParser.CHARLITERAL) | (1 << SimpleCodeParser.STRINGLITERAL))) != 0):
                     self.state = 277
                     self.method_call_params()
 
 
                 self.state = 280
                 self.match(SimpleCodeParser.T__7)
-                self.state = 281
-                self.match(SimpleCodeParser.T__3)
                 pass
             elif token in [SimpleCodeParser.CALLOUT]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 283
+                self.state = 282
                 self.match(SimpleCodeParser.CALLOUT)
-                self.state = 287
+                self.state = 286
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==SimpleCodeParser.SPACE:
-                    self.state = 284
+                    self.state = 283
                     self.match(SimpleCodeParser.SPACE)
-                    self.state = 289
+                    self.state = 288
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 290
+                self.state = 289
                 self.match(SimpleCodeParser.T__6)
-                self.state = 294
+                self.state = 293
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==SimpleCodeParser.SPACE:
-                    self.state = 291
+                    self.state = 290
                     self.match(SimpleCodeParser.SPACE)
-                    self.state = 296
+                    self.state = 295
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 297
+                self.state = 296
                 self.match(SimpleCodeParser.STRINGLITERAL)
-                self.state = 301
+                self.state = 300
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==SimpleCodeParser.SPACE:
-                    self.state = 298
+                    self.state = 297
                     self.match(SimpleCodeParser.SPACE)
-                    self.state = 303
+                    self.state = 302
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 319
+                self.state = 318
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==SimpleCodeParser.T__2:
-                    self.state = 304
+                    self.state = 303
                     self.match(SimpleCodeParser.T__2)
-                    self.state = 308
+                    self.state = 307
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while _la==SimpleCodeParser.SPACE:
-                        self.state = 305
+                        self.state = 304
                         self.match(SimpleCodeParser.SPACE)
-                        self.state = 310
+                        self.state = 309
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
 
-                    self.state = 311
+                    self.state = 310
                     self.callout_arg()
-                    self.state = 316
+                    self.state = 315
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while _la==SimpleCodeParser.T__2:
-                        self.state = 312
+                        self.state = 311
                         self.match(SimpleCodeParser.T__2)
-                        self.state = 313
+                        self.state = 312
                         self.callout_arg()
-                        self.state = 318
+                        self.state = 317
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
 
 
 
-                self.state = 321
+                self.state = 320
                 self.match(SimpleCodeParser.T__7)
-                self.state = 325
+                self.state = 324
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==SimpleCodeParser.SPACE:
-                    self.state = 322
+                    self.state = 321
                     self.match(SimpleCodeParser.SPACE)
-                    self.state = 327
+                    self.state = 326
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 328
+                self.state = 327
                 self.match(SimpleCodeParser.T__3)
-                self.state = 332
+                self.state = 331
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,42,self._ctx)
                 while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                     if _alt==1:
-                        self.state = 329
+                        self.state = 328
                         self.match(SimpleCodeParser.SPACE) 
-                    self.state = 334
+                    self.state = 333
                     self._errHandler.sync(self)
                     _alt = self._interp.adaptivePredict(self._input,42,self._ctx)
 
@@ -1649,11 +1647,12 @@ class SimpleCodeParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def IDENTIFIER(self, i:int=None):
+        def expr(self, i:int=None):
             if i is None:
-                return self.getTokens(SimpleCodeParser.IDENTIFIER)
+                return self.getTypedRuleContexts(SimpleCodeParser.ExprContext)
             else:
-                return self.getToken(SimpleCodeParser.IDENTIFIER, i)
+                return self.getTypedRuleContext(SimpleCodeParser.ExprContext,i)
+
 
         def SPACE(self, i:int=None):
             if i is None:
@@ -1688,27 +1687,27 @@ class SimpleCodeParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 337
-            self.match(SimpleCodeParser.IDENTIFIER)
-            self.state = 348
+            self.state = 336
+            self.expr(0)
+            self.state = 347
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==SimpleCodeParser.T__2:
-                self.state = 338
+                self.state = 337
                 self.match(SimpleCodeParser.T__2)
-                self.state = 342
+                self.state = 341
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 while _la==SimpleCodeParser.SPACE:
-                    self.state = 339
+                    self.state = 338
                     self.match(SimpleCodeParser.SPACE)
-                    self.state = 344
+                    self.state = 343
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
 
-                self.state = 345
-                self.match(SimpleCodeParser.IDENTIFIER)
-                self.state = 350
+                self.state = 344
+                self.expr(0)
+                self.state = 349
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1756,7 +1755,7 @@ class SimpleCodeParser ( Parser ):
         self.enterRule(localctx, 26, self.RULE_method_name)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 351
+            self.state = 350
             self.match(SimpleCodeParser.IDENTIFIER)
         except RecognitionException as re:
             localctx.exception = re
@@ -1805,24 +1804,24 @@ class SimpleCodeParser ( Parser ):
         localctx = SimpleCodeParser.LocationContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_location)
         try:
-            self.state = 359
+            self.state = 358
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,46,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 353
+                self.state = 352
                 self.match(SimpleCodeParser.IDENTIFIER)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 354
+                self.state = 353
                 self.match(SimpleCodeParser.IDENTIFIER)
-                self.state = 355
+                self.state = 354
                 self.match(SimpleCodeParser.T__4)
-                self.state = 356
+                self.state = 355
                 self.expr(0)
-                self.state = 357
+                self.state = 356
                 self.match(SimpleCodeParser.T__5)
                 pass
 
@@ -1899,50 +1898,50 @@ class SimpleCodeParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 373
+            self.state = 372
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,47,self._ctx)
             if la_ == 1:
-                self.state = 362
+                self.state = 361
                 self.location()
                 pass
 
             elif la_ == 2:
-                self.state = 363
+                self.state = 362
                 self.method_call()
                 pass
 
             elif la_ == 3:
-                self.state = 364
+                self.state = 363
                 self.literal()
                 pass
 
             elif la_ == 4:
-                self.state = 365
+                self.state = 364
                 self.match(SimpleCodeParser.T__11)
-                self.state = 366
+                self.state = 365
                 self.expr(3)
                 pass
 
             elif la_ == 5:
-                self.state = 367
+                self.state = 366
                 self.match(SimpleCodeParser.T__12)
-                self.state = 368
+                self.state = 367
                 self.expr(2)
                 pass
 
             elif la_ == 6:
-                self.state = 369
+                self.state = 368
                 self.match(SimpleCodeParser.T__6)
-                self.state = 370
+                self.state = 369
                 self.expr(0)
-                self.state = 371
+                self.state = 370
                 self.match(SimpleCodeParser.T__7)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 392
+            self.state = 391
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,50,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -1952,35 +1951,35 @@ class SimpleCodeParser ( Parser ):
                     _prevctx = localctx
                     localctx = SimpleCodeParser.ExprContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                    self.state = 375
+                    self.state = 374
                     if not self.precpred(self._ctx, 4):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                    self.state = 379
+                    self.state = 378
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while _la==SimpleCodeParser.SPACE:
-                        self.state = 376
+                        self.state = 375
                         self.match(SimpleCodeParser.SPACE)
-                        self.state = 381
+                        self.state = 380
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
 
-                    self.state = 382
+                    self.state = 381
                     self.match(SimpleCodeParser.BINARY_OP)
-                    self.state = 386
+                    self.state = 385
                     self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     while _la==SimpleCodeParser.SPACE:
-                        self.state = 383
+                        self.state = 382
                         self.match(SimpleCodeParser.SPACE)
-                        self.state = 388
+                        self.state = 387
                         self._errHandler.sync(self)
                         _la = self._input.LA(1)
 
-                    self.state = 389
+                    self.state = 388
                     self.expr(5) 
-                self.state = 394
+                self.state = 393
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,50,self._ctx)
 
@@ -2031,18 +2030,18 @@ class SimpleCodeParser ( Parser ):
         localctx = SimpleCodeParser.Callout_argContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_callout_arg)
         try:
-            self.state = 397
+            self.state = 396
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,51,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 395
+                self.state = 394
                 self.expr(0)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 396
+                self.state = 395
                 self.match(SimpleCodeParser.STRINGLITERAL)
                 pass
 
@@ -2101,7 +2100,7 @@ class SimpleCodeParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 399
+            self.state = 398
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SimpleCodeParser.BOOLEANLITERAL) | (1 << SimpleCodeParser.INTLITERAL) | (1 << SimpleCodeParser.CHARLITERAL) | (1 << SimpleCodeParser.STRINGLITERAL))) != 0)):
                 self._errHandler.recoverInline(self)
