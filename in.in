@@ -1,9 +1,6 @@
 class Program {
-  int b;
-  int a;  
-  boolean c;
-  int main(int e, int f, int g) {
-    a = 1;
-    return true;
+  void main() {
+    for x = false, 10 {   //initial condition must be an int
+    }
   }							
 }

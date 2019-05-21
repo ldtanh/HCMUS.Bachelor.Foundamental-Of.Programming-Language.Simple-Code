@@ -111,9 +111,22 @@ FUNCTION_PARAMS_MISMATCHED = "Function [{0}] requires list parameters as {1}, wh
 ERROR_VOID_RETURN_DATA_TYPE = "Void [{0}] can't return value, got type [{1}]\n"
 ERROR_FUNCTION_RETURN_WRONG_TYPE = "Function [{0}] expected return type as [{1}], got [{2}]\n"
 ERROR_FUNCTION_RETURN_EMPTY = "Function [{0}] expected return type as [{1}], got empty\n"
+ERROR_ARRAY_INDEX_TYPE = "Array [{0}] index type must be [int], got [{1}]\n"
+ERROR_ARRAY_INDEX_UNDEFINED = "Array [{0}] must have index, but got empty\n"
+ERROR_RHS_IS_ARRAY = "Right hand side of assignment must not be {0}\n"
+ERROR_ARRAY_INDEX_OUT_OF_RANGE = "Array [{0}] index is out of range, must be less than [{1}], actually [{2}]\n"
+ERROR_VAR_IS_NOT_ARRAY = "[{0}] is not an array to iterate\n"
+ERROR_IF_CONDITION_MUST_BE_BOOLEAN = 'Condition in if-else must be boolean, got [{0}]\n'
+ERROR_ITERATOR_LOOP_NOT_INT = 'Iterator in Loop must be int-variable, got [{0}]\n'
+ERROR_MISSING_IDENTIFIER_FOR = 'For-loop is missing iterator\n'
+ERROR_PARAMS_FOR = 'For-loop got {0} param(s), expected 3\n'
+ERROR_INIT_VALUE_FOR = 'For-loop must have initialized value int-type, got [{0}]\n'
+ERROR_FINAL_VALUE_FOR = 'For-loop must have final value int-type, got [{0}]\n'
 
 INT_TYPE = 'int'
 BOOL_TYPE = 'boolean'
+ARRAY_TYPE = 'array[{0}]'
+
 VOID = 'void'
 
 def checkTypeCompatible(op, dataType):
@@ -125,6 +138,7 @@ class MyVisitor(SimpleCodeVisitor):
     def __init__(self, lexer, fWrite):
         self.table = {}
         self.funcTable = {}
+        self.arrayTable = {}
         self.lexer = lexer
         self.fWrite = fWrite
 
@@ -194,14 +208,15 @@ class MyVisitor(SimpleCodeVisitor):
         # if ctx.INTLITERAL() == '':
         if isinstance(ctx.INTLITERAL(), ErrorNodeImpl):
             self.printError(ctx, ERROR_ARRAY_LENGTH_NOT_DEFINED, ctx.IDENTIFIER().getText())
-        if ctx.INTLITERAL().getText() == '0':
+        elif ctx.INTLITERAL().getText() == '0':
             self.printError(ctx, ERROR_ARRAY_ZERO_LENGTH, ctx.IDENTIFIER().getText())
+        else:
+            # Everything ok
+            self.arrayTable[ctx.IDENTIFIER().getText()] = int(ctx.INTLITERAL().getText())
         return ctx.IDENTIFIER()
 
     def visitAssign_statement(self, ctx:SimpleCodeParser.Assign_statementContext):
-        # print(ctx.expr().getToken())
-        # print(dir(ctx.expr()))
-        lhs = ctx.location().getText()
+        lhs = self.visit(ctx.location())
         op = ctx.assign_op().getText()
         rhs = self.visit(ctx.expr())
         
@@ -230,6 +245,11 @@ class MyVisitor(SimpleCodeVisitor):
         if lhsType != rhsType:
             self.printError(ctx, ERROR_DATA_TYPE_DIFFERENT, lhsType, rhsType)
         
+        rhsArrayCheck = self.arrayTable.get(rhs)
+        if rhsArrayCheck:
+            arrayType = ARRAY_TYPE.format(self.table[rhs])
+            self.printError(ctx, ERROR_RHS_IS_ARRAY, arrayType)        
+        
     def visitLiteral(self, ctx:SimpleCodeParser.LiteralContext):
         if (ctx.INTLITERAL()):
             return INT_TYPE
@@ -238,7 +258,31 @@ class MyVisitor(SimpleCodeVisitor):
         return self.visitChildren(ctx)
 
     def visitLocation(self, ctx:SimpleCodeParser.LocationContext):
-        return ctx.IDENTIFIER().getText()
+        varName = ctx.IDENTIFIER().getText()
+        # Check if Array
+        if ctx.expr():
+            arrSize = self.arrayTable.get(varName)
+
+            if not arrSize:
+                # Not array!
+                self.printError(ctx, ERROR_VAR_IS_NOT_ARRAY, varName)
+                return varName
+
+            idxType = self.visit(ctx.expr())
+
+            if idxType not in [INT_TYPE, BOOL_TYPE, None]:
+                idxType = self.table.get(idxType)
+            
+            
+            if not idxType:
+                self.printError(ctx, ERROR_ARRAY_INDEX_UNDEFINED, varName)
+            elif idxType != INT_TYPE:
+                self.printError(ctx, ERROR_ARRAY_INDEX_TYPE, varName, idxType)
+            else:
+                idx = int(ctx.expr().getText())
+                if idx >= arrSize:
+                    self.printError(ctx, ERROR_ARRAY_INDEX_OUT_OF_RANGE, varName, arrSize, idx)
+        return varName
 
     def visitMethod_call(self, ctx:SimpleCodeParser.Method_callContext):
         if ctx.CALLOUT() is None:
@@ -294,14 +338,46 @@ class MyVisitor(SimpleCodeVisitor):
             if _.RETURN() is not None:
                 listReturned.append(_)
         return listReturned
-            
+    
     def visitStatement(self, ctx:SimpleCodeParser.StatementContext):
-        # if ctx.RETURN() is not None:
-        #     if len(ctx.expr()) > 0:
-        #         return self.visit(ctx.expr()[0])
-        #     return None
+        if (ctx.IF()):
+            idx = self.visit(ctx.expr()[0])
+            if idx not in [INT_TYPE, BOOL_TYPE, None]:
+                idx = self.table.get(idx)
+            if idx != BOOL_TYPE:
+                self.printError(ctx, ERROR_IF_CONDITION_MUST_BE_BOOLEAN, idx)
+    
+        if (ctx.FOR()):
+            idx = ctx.IDENTIFIER()
 
-        self.visitChildren(ctx)
+            if idx is None:
+                self.printError(ctx, ERROR_MISSING_IDENTIFIER_FOR)
+                return self.visitChildren(ctx)
+                
+            idx = idx.getText()
+            idxType = self.table.get(idx)
+            if idxType not in [INT_TYPE, None]:
+                self.printError(ctx, ERROR_ITERATOR_LOOP_NOT_INT, idxType)
+            else:
+                isArray = self.arrayTable.get(idx)
+                if isArray:
+                    self.printError(ctx, ERROR_ITERATOR_LOOP_NOT_INT, ARRAY_TYPE.format(idxType))
+            
+            listForParams = ctx.expr()
+            if len(listForParams) != 2:
+                self.printError(ctx, ERROR_PARAMS_FOR, len(listForParams) + 1)
+                return self.visitChildren(ctx)
+            
+            initValueType = self.visit(listForParams[0])
+            if initValueType != INT_TYPE:
+                self.printError(ctx, ERROR_INIT_VALUE_FOR, initValueType)
+                
+            finalValueType = self.visit(listForParams[1])
+            if finalValueType != INT_TYPE:
+                self.printError(ctx, ERROR_FINAL_VALUE_FOR, finalValueType)
+                
+
+        return self.visitChildren(ctx)
 
 def main(argv):
     input_stream = FileStream(argv[1])
@@ -318,5 +394,6 @@ def main(argv):
     # flattenTree(tree, lexer)
     print(visitor.table)
     print(visitor.funcTable)
+    print(visitor.arrayTable)
 if __name__ == '__main__':
     main(sys.argv)
