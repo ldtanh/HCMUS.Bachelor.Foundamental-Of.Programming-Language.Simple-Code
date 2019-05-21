@@ -110,9 +110,11 @@ FUNCTION_NOT_DEFINED = "Function [{0}] is not defined!\n"
 FUNCTION_PARAMS_MISMATCHED = "Function [{0}] requires list parameters as {1}, which is actually as {2}\n"
 ERROR_VOID_RETURN_DATA_TYPE = "Void [{0}] can't return value, got type [{1}]\n"
 ERROR_FUNCTION_RETURN_WRONG_TYPE = "Function [{0}] expected return type as [{1}], got [{2}]\n"
+ERROR_FUNCTION_RETURN_EMPTY = "Function [{0}] expected return type as [{1}], got empty\n"
 
 INT_TYPE = 'int'
 BOOL_TYPE = 'boolean'
+VOID = 'void'
 
 def checkTypeCompatible(op, dataType):
     if op.strip() in ['+=', '-=', '+', '-', '*', '/', '%', '<','>', '<=', '>=', '=']:
@@ -163,8 +165,20 @@ class MyVisitor(SimpleCodeVisitor):
         else:
             self.table[methodName] = declarationType
         
-        self.visit(ctx.block())
-        
+        listReturned = self.visit(ctx.block())
+
+        for child in listReturned:
+            returnType = VOID
+            if len(child.expr()) > 0:
+                returnType = self.visit(child.expr()[0])
+            if returnType != declarationType:
+                if declarationType == VOID:
+                    self.printError(child, ERROR_VOID_RETURN_DATA_TYPE, methodName, returnType)
+                elif returnType == VOID:
+                    self.printError(child, ERROR_FUNCTION_RETURN_EMPTY, methodName, declarationType)
+                else:
+                    self.printError(child, ERROR_FUNCTION_RETURN_WRONG_TYPE, methodName, declarationType, returnType)
+
 
     def visitMethod_params(self, ctx:SimpleCodeParser.Method_paramsContext):
         listParams = [id.getText() for id in ctx.DATA_TYPE()]
@@ -243,9 +257,7 @@ class MyVisitor(SimpleCodeVisitor):
             if listParams is not None:
                 requiredParams = self.funcTable[funcName]
                 if requiredParams != listParams:            
-                    self.printError(ctx, FUNCTION_PARAMS_MISMATCHED, funcName, requiredParams, listParams)
-
-            
+                    self.printError(ctx, FUNCTION_PARAMS_MISMATCHED, funcName, requiredParams, listParams)            
                    
             return self.table.get(funcName)
 
@@ -279,13 +291,17 @@ class MyVisitor(SimpleCodeVisitor):
         self.visitChildren(ctx)
         listReturned = []
         for _ in ctx.statement():
-            print(self.visit(_))
-        print(listReturned)
+            if _.RETURN() is not None:
+                listReturned.append(_)
+        return listReturned
             
     def visitStatement(self, ctx:SimpleCodeParser.StatementContext):
-        if (ctx.RETURN()):
-            return self.visit(ctx.expr)
-        return self.visitChildren(ctx)
+        # if ctx.RETURN() is not None:
+        #     if len(ctx.expr()) > 0:
+        #         return self.visit(ctx.expr()[0])
+        #     return None
+
+        self.visitChildren(ctx)
 
 def main(argv):
     input_stream = FileStream(argv[1])

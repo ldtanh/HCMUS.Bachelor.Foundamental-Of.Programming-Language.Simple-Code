@@ -1,0 +1,1 @@
+Error at line 7, column 4 : Function [main] expected return type as [int], got [boolean]

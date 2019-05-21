@@ -2,7 +2,7 @@ class Program {
   int b;
   int a;  
   boolean c;
-  void main(int e, int f, int g) {
+  int main(int e, int f, int g) {
     a = 1;
     return true;
   }							
