@@ -108,6 +108,9 @@ ERROR_ARRAY_ZERO_LENGTH = "Array [{0}] is declared with zero-size\n"
 ERROR_ARRAY_LENGTH_NOT_DEFINED = "Array [{0}] is declared with wrong size\n"
 FUNCTION_NOT_DEFINED = "Function [{0}] is not defined!\n"
 FUNCTION_PARAMS_MISMATCHED = "Function [{0}] requires list parameters as {1}, which is actually as {2}\n"
+ERROR_VOID_RETURN_DATA_TYPE = "Void [{0}] can't return value, got type [{1}]\n"
+ERROR_FUNCTION_RETURN_WRONG_TYPE = "Function [{0}] expected return type as [{1}], got [{2}]\n"
+
 INT_TYPE = 'int'
 BOOL_TYPE = 'boolean'
 
@@ -159,6 +162,7 @@ class MyVisitor(SimpleCodeVisitor):
                 self.printError(ctx, ERROR_DUPLICATE_VAR_DEFINE, methodName, self.table[methodName])
         else:
             self.table[methodName] = declarationType
+        
         self.visit(ctx.block())
         
 
@@ -241,6 +245,8 @@ class MyVisitor(SimpleCodeVisitor):
                 if requiredParams != listParams:            
                     self.printError(ctx, FUNCTION_PARAMS_MISMATCHED, funcName, requiredParams, listParams)
 
+            
+                   
             return self.table.get(funcName)
 
     def visitExpr(self, ctx:SimpleCodeParser.ExprContext):
@@ -266,8 +272,20 @@ class MyVisitor(SimpleCodeVisitor):
                 self.printError(ctx, ERROR_VAR_NOT_DEFINED, id)
                 return None
             listParams.append(self.table[id])
-            
+
         return listParams
+
+    def visitBlock(self, ctx:SimpleCodeParser.BlockContext):
+        self.visitChildren(ctx)
+        listReturned = []
+        for _ in ctx.statement():
+            print(self.visit(_))
+        print(listReturned)
+            
+    def visitStatement(self, ctx:SimpleCodeParser.StatementContext):
+        if (ctx.RETURN()):
+            return self.visit(ctx.expr)
+        return self.visitChildren(ctx)
 
 def main(argv):
     input_stream = FileStream(argv[1])

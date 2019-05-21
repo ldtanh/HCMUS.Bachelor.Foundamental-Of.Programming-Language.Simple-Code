@@ -2,8 +2,8 @@ class Program {
   int b;
   int a;  
   boolean c;
-  int main(int e, int f, int g) {
+  void main(int e, int f, int g) {
     a = 1;
-    main(1, main(1, 1, 1), true);	
+    return true;
   }							
 }
