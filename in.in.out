@@ -1,1 +1,1 @@
-Error at line 3, column 4 : For-loop must have initialized value int-type, got [boolean]
+Error at line 6, column 4 : Right hand side should be type [int], got type [boolean]

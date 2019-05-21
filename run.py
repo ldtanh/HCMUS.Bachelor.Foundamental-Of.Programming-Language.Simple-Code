@@ -102,7 +102,7 @@ ERROR_DUPLICATE_VAR_DEFINE = 'Variable [{0}] is already declared with type [{1}]
 ERROR_VAR_NOT_DEFINED = 'Variable [{0}] has not been defined\n'
 ERROR_VAR_EXCUTE_AS_FUNCTION = 'Variable [{0}] is not a function\n'
 ERROR_DATA_TYPE_NOT_COMPATIBLE_OPERATOR = 'Type [{0}] is not compatible with operator [{1}]\n'
-ERROR_DATA_TYPE_DIFFERENT = "Type [{0}] and type [{1}] are different to operate\n"
+ERROR_DATA_TYPE_DIFFERENT = "Right hand side should be type [{0}], got type [{1}]\n"
 MAIN_METHOD_IS_NOT_AVAILABLE = "There is no 'main' method is declared\n"
 ERROR_ARRAY_ZERO_LENGTH = "Array [{0}] is declared with zero-size\n"
 ERROR_ARRAY_LENGTH_NOT_DEFINED = "Array [{0}] is declared with wrong size\n"
@@ -122,6 +122,8 @@ ERROR_MISSING_IDENTIFIER_FOR = 'For-loop is missing iterator\n'
 ERROR_PARAMS_FOR = 'For-loop got {0} param(s), expected 3\n'
 ERROR_INIT_VALUE_FOR = 'For-loop must have initialized value int-type, got [{0}]\n'
 ERROR_FINAL_VALUE_FOR = 'For-loop must have final value int-type, got [{0}]\n'
+ERROR_OPERATOR_MISMATCHED = "Type [{0}] and type [{1}] couldn't operate with [{2}]\n"
+ERROR_NOT_OPERATOR_POSTFIX = '[!] operator requires boolean variable, got [{0}]\n'
 
 INT_TYPE = 'int'
 BOOL_TYPE = 'boolean'
@@ -130,9 +132,27 @@ ARRAY_TYPE = 'array[{0}]'
 VOID = 'void'
 
 def checkTypeCompatible(op, dataType):
-    if op.strip() in ['+=', '-=', '+', '-', '*', '/', '%', '<','>', '<=', '>=', '=']:
+    if op.strip() == '=':
+        return True
+
+    if op.strip() in ['+=', '-=', '+', '-', '*', '/', '%', '<','>', '<=', '>=']:
         return dataType == INT_TYPE
+
     return dataType == BOOL_TYPE
+
+def getTypeFromOperator(op):
+    if op.strip() in ['+', '-', '*', '/', '%']:
+        return INT_TYPE
+    return BOOL_TYPE
+
+def checkValidOperation(op, x, y):
+    if op.strip() in ['!=', '==']:
+        return x == y
+
+    if op.strip() in ['+', '-', '*', '/', '%',  '<', '>', '<=', '>=']:
+        return (x == INT_TYPE) and (y == INT_TYPE)
+
+    return (x == BOOL_TYPE) and (y == BOOL_TYPE)
 
 class MyVisitor(SimpleCodeVisitor):
     def __init__(self, lexer, fWrite):
@@ -312,7 +332,53 @@ class MyVisitor(SimpleCodeVisitor):
             return self.visit(ctx.literal())
         if (ctx.method_call()):
             return self.visit(ctx.method_call())
+        if (ctx.BINARY_OP()):
+            x = self.visit(ctx.expr()[0])
+            y = self.visit(ctx.expr()[1])
+            if x not in [INT_TYPE, BOOL_TYPE]:
+                if not self.table.get(x):
+                    self.printError(ctx, ERROR_VAR_NOT_DEFINED, x)
+                else:
+                    if self.arrayTable.get(x):
+                        x = ARRAY_TYPE.format(self.table[x])
+                    else:
+                        x = self.table[x]
 
+            if y not in [INT_TYPE, BOOL_TYPE]:
+                if not self.table.get(y):
+                    self.printError(ctx, ERROR_VAR_NOT_DEFINED, y)
+                else:
+                    if self.arrayTable.get(y):
+                        y = ARRAY_TYPE.format(self.table[y])
+                    else:
+                        y = self.table[y]
+            
+            op = ctx.BINARY_OP().getText()
+            opType = getTypeFromOperator(op)
+
+            if not checkValidOperation(op, x, y):
+                self.printError(ctx, ERROR_OPERATOR_MISMATCHED, x, y, op)
+            
+            return opType
+        
+        prefix = ctx.getChild(0).getText()
+
+        if prefix == '!':
+            id = ctx.expr()[0].getText().strip()
+            if id == '':
+                self.printError(ctx, ERROR_NOT_OPERATOR_POSTFIX, None)
+            else:
+                idType = self.table[self.visit(ctx.expr()[0])]
+                if idType != BOOL_TYPE:
+                    if not self.table.get(id):
+                        self.printError(ctx, ERROR_VAR_NOT_DEFINED, id)
+                    else:
+                        idType = self.table[id]
+                        if self.arrayTable.get(id):
+                            idType = ARRAY_TYPE.format(idType)
+                        self.printError(ctx, ERROR_NOT_OPERATOR_POSTFIX, idType)
+            return BOOL_TYPE
+        
         return self.visitChildren(ctx)
 
     def visitMethod_call_params(self, ctx:SimpleCodeParser.Method_call_paramsContext):
