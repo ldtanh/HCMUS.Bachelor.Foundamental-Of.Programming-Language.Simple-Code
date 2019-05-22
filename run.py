@@ -114,9 +114,9 @@ ERROR_FUNCTION_RETURN_EMPTY = "Function [{0}] expected return type as [{1}], got
 ERROR_ARRAY_INDEX_TYPE = "Array [{0}] index type must be [int], got [{1}]\n"
 ERROR_ARRAY_INDEX_UNDEFINED = "Array [{0}] must have index, but got empty\n"
 ERROR_RHS_IS_ARRAY = "Right hand side of assignment must not be {0}\n"
-ERROR_ARRAY_INDEX_OUT_OF_RANGE = "Array [{0}] index is out of range, must be less than [{1}], actually [{2}]\n"
+ERROR_ARRAY_INDEX_OUT_OF_RANGE = "Array [{0}] index is out of range, must be non-negative and less than [{1}], actually [{2}]\n"
 ERROR_VAR_IS_NOT_ARRAY = "[{0}] is not an array to iterate\n"
-ERROR_IF_CONDITION_MUST_BE_BOOLEAN = 'Condition in if-else must be boolean, got [{0}]\n'
+ERROR_IF_CONDITION_MUST_BE_BOOLEAN = 'Condition in if-else must be [boolean], got [{0}]\n'
 ERROR_ITERATOR_LOOP_NOT_INT = 'Iterator in Loop must be int-variable, got [{0}]\n'
 ERROR_MISSING_IDENTIFIER_FOR = 'For-loop is missing iterator\n'
 ERROR_PARAMS_FOR = 'For-loop got {0} param(s), expected 3\n'
@@ -124,7 +124,7 @@ ERROR_INIT_VALUE_FOR = 'For-loop must have initialized value int-type, got [{0}]
 ERROR_FINAL_VALUE_FOR = 'For-loop must have final value int-type, got [{0}]\n'
 ERROR_OPERATOR_MISMATCHED = "Type [{0}] and type [{1}] couldn't operate with [{2}]\n"
 ERROR_NOT_OPERATOR_POSTFIX = '[!] operator requires boolean variable, got [{0}]\n'
-
+ERROR_SUB_OPERATOR_POSTFIX = '[-] operator requires int variable, got [{0}]\n'
 INT_TYPE = 'int'
 BOOL_TYPE = 'boolean'
 ARRAY_TYPE = 'array[{0}]'
@@ -168,10 +168,6 @@ class MyVisitor(SimpleCodeVisitor):
         else:
             self.fWrite.write('Error at line 0, column 0 : {0}'.format(errorMsg.format(*args)))
 
-    def visitProgram(self, ctx:SimpleCodeParser.ProgramContext):
-        return self.visitChildren(ctx)
-
-
     def visitField_decl(self, ctx:SimpleCodeParser.Field_declContext):
         dataType = ctx.DATA_TYPE().getText()
         for i in range(ctx.getChildCount()):
@@ -179,8 +175,7 @@ class MyVisitor(SimpleCodeVisitor):
             if (not isinstance(child, TerminalNodeImpl)) and (child.getText().strip() != ''):
                 id = self.visit(child).getText()
                 if id in self.table:
-                    if self.table[id] != dataType:
-                        self.printError(ctx, ERROR_DUPLICATE_VAR_DEFINE, id, self.table[id])
+                    self.printError(ctx, ERROR_DUPLICATE_VAR_DEFINE, id, self.table[id])
                 else:
                     self.table[id] = dataType
 
@@ -225,7 +220,6 @@ class MyVisitor(SimpleCodeVisitor):
         return self.visitChildren(ctx)
     
     def visitArray_decl(self, ctx:SimpleCodeParser.Array_declContext):
-        # if ctx.INTLITERAL() == '':
         if isinstance(ctx.INTLITERAL(), ErrorNodeImpl):
             self.printError(ctx, ERROR_ARRAY_LENGTH_NOT_DEFINED, ctx.IDENTIFIER().getText())
         elif ctx.INTLITERAL().getText() == '0':
@@ -300,7 +294,7 @@ class MyVisitor(SimpleCodeVisitor):
                 self.printError(ctx, ERROR_ARRAY_INDEX_TYPE, varName, idxType)
             else:
                 idx = int(ctx.expr().getText())
-                if idx >= arrSize:
+                if idx >= arrSize or idx < 0:
                     self.printError(ctx, ERROR_ARRAY_INDEX_OUT_OF_RANGE, varName, arrSize, idx)
         return varName
 
@@ -324,6 +318,8 @@ class MyVisitor(SimpleCodeVisitor):
                     self.printError(ctx, FUNCTION_PARAMS_MISMATCHED, funcName, requiredParams, listParams)            
                    
             return self.table.get(funcName)
+
+        self.visitChildren(ctx)
 
     def visitExpr(self, ctx:SimpleCodeParser.ExprContext):
         if (ctx.location()):
@@ -368,17 +364,44 @@ class MyVisitor(SimpleCodeVisitor):
             if id == '':
                 self.printError(ctx, ERROR_NOT_OPERATOR_POSTFIX, None)
             else:
-                idType = self.table[self.visit(ctx.expr()[0])]
-                if idType != BOOL_TYPE:
+                id = self.visit(ctx.expr()[0])
+                idType = id
+                if id not in [BOOL_TYPE, INT_TYPE]:
                     if not self.table.get(id):
                         self.printError(ctx, ERROR_VAR_NOT_DEFINED, id)
-                    else:
-                        idType = self.table[id]
-                        if self.arrayTable.get(id):
-                            idType = ARRAY_TYPE.format(idType)
+                        return BOOL_TYPE
+                    idType = self.table[id]                    
+                if idType != BOOL_TYPE:
+                    if (id == INT_TYPE) or (idType == INT_TYPE):
+                        self.printError(ctx, ERROR_NOT_OPERATOR_POSTFIX, INT_TYPE)
+                        return BOOL_TYPE
+                    if self.arrayTable.get(id):
+                        idType = ARRAY_TYPE.format(idType)
                         self.printError(ctx, ERROR_NOT_OPERATOR_POSTFIX, idType)
+                        return BOOL_TYPE
             return BOOL_TYPE
         
+        
+        if prefix == '-':
+            id = ctx.expr()[0].getText().strip()
+            if id == '':
+                self.printError(ctx, ERROR_SUB_OPERATOR_POSTFIX, None)
+            else:
+                id = self.visit(ctx.expr()[0])
+                idType = id
+                if id not in [BOOL_TYPE, INT_TYPE]:
+                    if not self.table.get(id):
+                        self.printError(ctx, ERROR_VAR_NOT_DEFINED, id)
+                        return INT_TYPE
+                    idType = self.table[id]                    
+                if idType != INT_TYPE:
+                    if (id == BOOL_TYPE) or (idType == BOOL_TYPE):
+                        self.printError(ctx, ERROR_SUB_OPERATOR_POSTFIX, BOOL_TYPE)
+                        return INT_TYPE
+                    if self.arrayTable.get(id):
+                        idType = ARRAY_TYPE.format(idType)
+                        self.printError(ctx, ERROR_SUB_OPERATOR_POSTFIX, idType)
+            return INT_TYPE
         return self.visitChildren(ctx)
 
     def visitMethod_call_params(self, ctx:SimpleCodeParser.Method_call_paramsContext):

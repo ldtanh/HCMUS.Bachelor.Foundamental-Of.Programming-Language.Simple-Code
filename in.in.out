@@ -1,1 +1,1 @@
-Error at line 6, column 4 : Right hand side should be type [int], got type [boolean]
+Error at line 5, column 4 : Array [a] index is out of range, must be non-negative and less than [10], actually [10]
