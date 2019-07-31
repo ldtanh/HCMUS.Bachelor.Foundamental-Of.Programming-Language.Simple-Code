@@ -1,0 +1,7 @@
+class Program {
+  int b;
+  int a[10];
+  void main() {
+    a[10] = 1;	// lhs and rhs of += must be int
+  }								
+}
